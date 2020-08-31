@@ -12,10 +12,12 @@ interface ApiInterface {
             @Query("api_key")apiKey: String,
                 /*@Query("language") language: String,         //These 2 are optional.
                 @Query("page") page: Int*/
+
         ): Call<MovieResponse>
 
     @GET("/configuration")          // if an error occurred the / at the beginning maybe the problem
     fun config (
+
         @Query("api_key") apiKey: String,
     ): Call<ImageDetails>
 
