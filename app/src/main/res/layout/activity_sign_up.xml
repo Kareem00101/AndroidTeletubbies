@@ -7,17 +7,34 @@
     android:background="#000000"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/editTextTextEmailAddress7"
+        android:layout_width="289dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="55dp"
+        android:background="#aa1d1d"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textEmailAddress"
+        android:text="  SIGN UP"
+        android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.879" />
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="52dp"
         android:text="Already have an account?"
         android:textColor="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.234"
+        app:layout_constraintHorizontal_bias="0.186"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -33,9 +50,10 @@
         android:textColor="#b3b3b3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.741" />
+        app:layout_constraintVertical_bias="0.691" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress5"
@@ -52,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="0.544" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress4"
@@ -110,10 +128,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.324"
+        app:layout_constraintHorizontal_bias="0.243"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.625" />
+        app:layout_constraintVertical_bias="0.594" />
 
     <Button
         android:id="@+id/button2"
@@ -126,14 +144,14 @@
         app:layout_constraintHorizontal_bias="0.417"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
+        app:layout_constraintVertical_bias="0.76" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginBottom="168dp"
+        android:layout_marginBottom="204dp"
         android:text="accept terms and conditions"
         android:textColor="#B3B3B3B3"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -146,7 +164,7 @@
         android:layout_width="47dp"
         android:layout_height="26dp"
         android:layout_marginStart="177dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="84dp"
         android:layout_marginEnd="177dp"
         android:text="-OR-"
         android:textColor="#aa1d1d"
@@ -165,9 +183,9 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.91" />
+        app:layout_constraintVertical_bias="0.926" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
