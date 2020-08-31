@@ -8,24 +8,23 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="133dp"
         android:layout_marginEnd="128dp"
-        android:layout_marginBottom="108dp"
-        android:gravity="center"
-        android:text="SIGN UP"
+        android:layout_marginBottom="132dp"
+        android:text="Recover Password"
         android:textColor="#c0c0c0"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress3"
+        android:id="@+id/Button_SignIn"
         android:layout_width="289dp"
         android:layout_height="47dp"
         android:layout_marginBottom="55dp"
@@ -39,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.743" />
+        app:layout_constraintVertical_bias="0.763" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -72,20 +71,22 @@
         app:layout_constraintVertical_bias="0.597" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView_signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="133dp"
         android:layout_marginEnd="128dp"
-        android:layout_marginBottom="164dp"
-        android:text="Recover Password"
+        android:gravity="center"
+        android:text="SIGN UP"
         android:textColor="#c0c0c0"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.895" />
 
     <TextView
         android:id="@+id/textView3"
@@ -119,7 +120,7 @@
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.809" />
+        app:layout_constraintVertical_bias="0.861" />
 
     <ImageView
         android:id="@+id/imageView"
