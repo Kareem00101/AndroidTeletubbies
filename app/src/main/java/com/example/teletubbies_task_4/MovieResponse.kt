@@ -54,7 +54,6 @@ data class ImageDetails(
 
 /*To whoever is making the main:
 
-You'll notice that movie, TV and person objects contain references to different file paths.
 In order to generate a fully working image URL, you'll need 3 pieces of data.
 Those pieces are a base_url, a file_size and a file_path.
 The first two pieces can be retrieved by calling the  API and the third is the file path you're wishing to grab on a particular media object.
@@ -62,6 +61,4 @@ The first two pieces can be retrieved by calling the  API and the third is the f
 
 https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg
 
-
-
-* */
+*/
