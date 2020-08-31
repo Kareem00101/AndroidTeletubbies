@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 textView_signUp.setOnClickListener {
-   val intent = Intent(this@MainActivity, SignUp::class.java)
+   val intent = Intent(this@MainActivity, MainActivity2::class.java)
     startActivity(intent)
 }
     }

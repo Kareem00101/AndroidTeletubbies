@@ -3,17 +3,15 @@ package com.example.teletubbies_task_4
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.activity_main2.*
 
-class SignUp : AppCompatActivity() {
+class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_main2)
         textView_signIn.setOnClickListener {
-            val intent = Intent (this@SignUp, MainActivity::class.java)
+            val intent = Intent (this@MainActivity2, MainActivity::class.java)
             startActivity(intent)
         }
-
     }
 }

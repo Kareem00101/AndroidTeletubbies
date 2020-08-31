@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:background="#000000">
-
+    android:background="#000000"
+    tools:context=".MainActivity2">
     <TextView
         android:id="@+id/textView_signIn2"
         android:layout_width="wrap_content"
@@ -175,5 +174,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.803" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
