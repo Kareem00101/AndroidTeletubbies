@@ -10,9 +10,9 @@ object ApiClient {
 
     fun getClient(): Retrofit {
         if (instance == null)
-            // TODO: Make sure to Enter Enter Your API's URL
+            
             instance = Retrofit.Builder()
-                .baseUrl("Enter Your API's URL Here")
+                .baseUrl("https://api.themoviedb.org/3/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(OkHttpClient().newBuilder().build())
                 .build()
