@@ -8,43 +8,129 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="from"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.882" />
-
-    <TextView
-        android:id="@+id/textView_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Teletubbies"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="30sp"
+        android:id="@+id/textView3"
+        android:layout_width="401dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginBottom="77dp"
+        android:gravity="center"
+        android:text="Movie Time"
+        android:textColor="#c0c0c0"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.953" />
+        app:layout_constraintVertical_bias="0.116" />
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="374dp"
-        android:layout_height="436dp"
-        android:foregroundGravity="center"
+        android:id="@+id/imageView"
+        android:layout_width="348dp"
+        android:layout_height="111dp"
+        android:layout_marginStart="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/popcorn_33"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <EditText
+        android:id="@+id/Button_SignIn"
+        android:layout_width="289dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="55dp"
+        android:background="#aa1d1d"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textEmailAddress"
+        android:text="  SIGN IN"
+        android:textColor="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333"
-        app:srcCompat="@drawable/popcorn_33" />
+        app:layout_constraintVertical_bias="0.666" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="337dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/background"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="  Username or phone number"
+        android:textColor="#b3b3b3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.364" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress2"
+        android:layout_width="337dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/background"
+        android:text="   Password                                        SHOW"
+        android:textColor="#b3b3b3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.51" />
+
+    <TextView
+        android:id="@+id/textView_signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="133dp"
+        android:layout_marginEnd="128dp"
+        android:gravity="center"
+        android:text="SIGN UP"
+        android:textColor="#c0c0c0"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.818" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="133dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="208dp"
+        android:text="Recover Password"
+        android:textColor="#c0c0c0"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="28dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="194dp"
+        android:layout_marginEnd="194dp"
+        android:text="-OR-"
+        android:textColor="#c0c0c0"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.763" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
