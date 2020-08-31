@@ -7,6 +7,26 @@ import com.google.gson.annotations.SerializedName
 
 
 data class MovieResponse(
-    @SerializedName("result")
+
+    @SerializedName("results")
     val resultsList: List<MovieDetails>
+
+)
+
+
+data class MovieDetails(
+
+    @SerializedName("title")               //Movie Name
+    val title: String,
+    @SerializedName("poster_path")         //Movie Picture in screen1
+    val posterPortrait: String,
+    @SerializedName("vote_average")
+    val rating: Float,
+    @SerializedName("original_language")
+    val language: String,
+    @SerializedName("release_date")
+    val release: String,
+
+
+
 )
