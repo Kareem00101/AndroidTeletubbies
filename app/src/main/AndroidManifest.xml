@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".startScreen"></activity>
-        <activity android:name=".firstScreen" />
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".recyclerview_movies" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".startScreen"
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
