@@ -8,20 +8,31 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="133dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="132dp"
-        android:text="Recover Password"
+        android:id="@+id/textView3"
+        android:layout_width="401dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginBottom="77dp"
+        android:gravity="center"
+        android:text="Movie Time"
         android:textColor="#c0c0c0"
-        android:textSize="18sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.116" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="348dp"
+        android:layout_height="111dp"
+        android:layout_marginStart="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/popcorn_33"
+        tools:layout_editor_absoluteY="116dp" />
 
     <EditText
         android:id="@+id/Button_SignIn"
@@ -38,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.763" />
+        app:layout_constraintVertical_bias="0.666" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -52,9 +63,10 @@
         android:textColor="#b3b3b3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.446" />
+        app:layout_constraintVertical_bias="0.364" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress2"
@@ -68,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.597" />
+        app:layout_constraintVertical_bias="0.51" />
 
     <TextView
         android:id="@+id/textView_signUp"
@@ -86,24 +98,23 @@
         app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.895" />
+        app:layout_constraintVertical_bias="0.818" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="157dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="77dp"
-        android:text="Movie Time"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="133dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="208dp"
+        android:text="Recover Password"
         android:textColor="#c0c0c0"
-        android:textSize="28sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
@@ -113,22 +124,13 @@
         android:layout_marginEnd="194dp"
         android:text="-OR-"
         android:textColor="#c0c0c0"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="244dp"
-        android:layout_height="178dp"
-        android:layout_marginStart="84dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/popcorn_33"
-        tools:layout_editor_absoluteY="87dp" />
+        app:layout_constraintVertical_bias="0.763" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
