@@ -34,26 +34,22 @@ import kotlinx.android.synthetic.main.item_note.*
 //Errors i am facing right now:
 //Errors i am facing right now:
 //TODO:ReadBelow @NardineYousry.
-//setContentView must be set to setContentView(R.layout.activity_main).
-//bs lama b3ml kda program by3ml crash.
-//lesa msh 3arf ezay a3ml mwdo3 al image bs malak 3mlalo documentation fel API interface.
-//lesa msh 3arf ezay 7b3t lel adapter list ykon feha 7agat imageDetails / movieDetails f nfs al w2t.
-//bs mthy2ly mmkn n3ml list gowa movieDetails ykon feha imageDetails.
-
+//Test Branch Details
+//Test Branch Details
+//Test Branch Details
+// fel branch da 8ayart al manifest file, w shelt comment men 3la textview - button codes.
+// w 7atet comment 3la requestMoviesData.
+// w 8ayart al R.layout 3shan tshofy shkl al 7aga al 3ady mfrood ykon 3amel ezay.
 
 class MainActivity : AppCompatActivity(), MovieRepository.MovieCallBack {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recyclerview_movies)
+        setContentView(R.layout.activity_main)
 
-        //TODO: READ BELOW! @NardineYousry.
-        //error in the code above mfrood tkon R.layout.main_activity bs lama b3ml kda bideny error.
-        //8albn error 3shan al code al network al mktob t7t mfrood ykon mktob f activity tanya.
-        //73ml testbranch tany awreeky feh shakl al run al 3ady mfrood ykon 3amel ezay.
 
         //TODO: DO NOT DELETE THE CODE BELOW, IT IS COMMENTED FOR TEST PURPOSES.
         //switches you to the sign up layout
-        /*textView_signUp.setOnClickListener {
+        textView_signUp.setOnClickListener {
         val intent = Intent(this@MainActivity, MainActivity2::class.java)
             startActivity(intent)
         }
@@ -61,12 +57,12 @@ class MainActivity : AppCompatActivity(), MovieRepository.MovieCallBack {
        button_Preview.setOnClickListener {
             val intent = Intent(this@MainActivity, RecyclerViewMovies::class.java)
             startActivity(intent)
-        }*/
+        }
         //Write your network code here
         //Write your network code here
         //Write your network code here
-
-        requestMoviesData("English")
+        //TODO: law shelt comment men 3la call di by3ml error still msh mot2kd leeh bs 8albn 3shan mfrood tb2a f activity tnya.
+        //requestMoviesData("English")
 
 
     }
