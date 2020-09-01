@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_note.*
 //DEADLINE: Wednesday: 6PM.
 //TODO: Before modifying my code please merge it into yours or create a branch from it.  //@NardineYousry.
 //TODO: Create MovieRepository class                                                     //Done.
-//TODO: try binding data to the item_note class without the images.                     //
+//TODO: try binding data to the item_note class without the images.                     //Done.
 //TODO: find the way to pass images, first in a simple test then to the adapter.       //
 //TODO: for simple tests try binding data directly to the item_note layout.           //
 //TODO: after successful simple tests try linking data to the adapter.               //
@@ -26,13 +26,18 @@ import kotlinx.android.synthetic.main.item_note.*
 //TODO: item_note class might need modifications.                    //Depending on network results.
 //TODO: plus point Movie Details Layout and the required code.      //if finished before deadline with 12 hours.
 
+//DO NOT FORGET!
+//TODO: I modified android:hint to tools:hint in item_note for testing purposes. //Modify in the end.
+//TODO: I modified the manifest for testing purposes.              //Modify at end of tests.
+//TODO: Remember to return to original state.                     //Complete!
+
 class MainActivity : AppCompatActivity(), MovieRepository.MovieCallBack {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.item_note)
 
         //switches you to the sign up layout
-        textView_signUp.setOnClickListener {
+        /*textView_signUp.setOnClickListener {
         val intent = Intent(this@MainActivity, MainActivity2::class.java)
             startActivity(intent)
         }
@@ -40,10 +45,12 @@ class MainActivity : AppCompatActivity(), MovieRepository.MovieCallBack {
        button_Preview.setOnClickListener {
             val intent = Intent(this@MainActivity, RecyclerViewMovies::class.java)
             startActivity(intent)
-        }
+        }*/
         //Write your network code here
         //Write your network code here
         //Write your network code here
+
+        requestMoviesData("English")
 
 
     }
@@ -59,6 +66,7 @@ class MainActivity : AppCompatActivity(), MovieRepository.MovieCallBack {
     {
         releaseDate.text = movie.resultsList[0].release
         ratingOfMovie.text = movie.resultsList[0].rating.toString()
+        languageOfMovie.text = movie.resultsList[0].language
 
 
     }

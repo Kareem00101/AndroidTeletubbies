@@ -43,9 +43,10 @@ object MovieRepository {
 
                     if(response.isSuccessful)
                     {
+                        println("Response Successful")
                         //passing the response data to the var
                         moviesData = response.body()!!
-
+                        callback.onMovieReady(moviesData)
                     } else if(response.code() in 400..404) {
                         //in case of an error, helps identifying the error.
                         val msg = "an error has occurred"
