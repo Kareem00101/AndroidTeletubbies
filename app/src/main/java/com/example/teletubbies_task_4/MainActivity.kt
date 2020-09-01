@@ -3,7 +3,9 @@ package com.example.teletubbies_task_4
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_note.*
 
 //API key
 //4b7ad36f69f80aa34703d042a53836e4
@@ -24,7 +26,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 //TODO: item_note class might need modifications.                    //Depending on network results.
 //TODO: plus point Movie Details Layout and the required code.      //if finished before deadline with 12 hours.
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MovieRepository.MovieCallBack {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -44,5 +46,34 @@ class MainActivity : AppCompatActivity() {
         //Write your network code here
 
 
+    }
+
+    private fun requestMoviesData(movieLang: String = "English")
+    {
+        //TODO: This tag
+        MovieRepository.requestMovieData(movieLang, this)
+    }
+
+    //Binding data function, necessary for simple test.
+    private fun bindMoviesData(movie: MovieResponse)
+    {
+        releaseDate.text = movie.resultsList[0].release
+        ratingOfMovie.text = movie.resultsList[0].rating.toString()
+
+
+    }
+
+
+
+
+    //MovieCallBack members.
+    override fun onMovieReady(movie: MovieResponse) {
+        //calling data binding function.
+        bindMoviesData(movie)
+    }
+
+    override fun onMovieError(errorMsg: String) {
+        //TODO: check which activity ???
+        Toast.makeText(this@MainActivity, errorMsg, Toast.LENGTH_LONG).show()
     }
 }

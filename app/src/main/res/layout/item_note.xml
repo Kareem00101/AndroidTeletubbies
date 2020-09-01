@@ -13,7 +13,7 @@
     tools:ignore="ExtraText">
 
     <TextView
-        android:id="@+id/rating"
+        android:id="@+id/ratingOfMovie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -32,7 +32,7 @@
         tools:text="rate" />
 
     <TextView
-        android:id="@+id/language"
+        android:id="@+id/languageOfMovie"
         android:layout_width="86dp"
         android:layout_height="16dp"
         android:layout_marginStart="10dp"
@@ -51,7 +51,7 @@
         tools:text="language" />
 
     <TextView
-        android:id="@+id/release"
+        android:id="@+id/releaseDate"
         android:layout_width="88dp"
         android:layout_height="14dp"
         android:layout_marginStart="10dp"
