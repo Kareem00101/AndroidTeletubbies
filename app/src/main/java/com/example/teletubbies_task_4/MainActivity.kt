@@ -9,9 +9,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_recyclerview_movies.*
 import kotlinx.android.synthetic.main.item_note.*
 
-//API key
-//4b7ad36f69f80aa34703d042a53836e4
-
 //Networks
 //DEADLINE: Wednesday: 6PM.
 //TODO: Before modifying my code please merge it into yours or create a branch from it.  //@NardineYousry.
@@ -33,10 +30,26 @@ import kotlinx.android.synthetic.main.item_note.*
 //TODO: I modified the manifest for testing purposes.              //Modify at end of tests.
 //TODO: Remember to return to original state.                     //Complete!
 
+//Errors i am facing right now:
+//Errors i am facing right now:
+//Errors i am facing right now:
+//TODO:ReadBelow @NardineYousry.
+//setContentView must be set to setContentView(R.layout.activity_main).
+//bs lama b3ml kda program by3ml crash.
+//lesa msh 3arf ezay a3ml mwdo3 al image bs malak 3mlalo documentation fel API interface.
+//lesa msh 3arf ezay 7b3t lel adapter list ykon feha 7agat imageDetails / movieDetails f nfs al w2t.
+//bs mthy2ly mmkn n3ml list gowa movieDetails ykon feha imageDetails.
+
+
 class MainActivity : AppCompatActivity(), MovieRepository.MovieCallBack {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
+
+        //TODO: READ BELOW! @NardineYousry.
+        //error in the code above mfrood tkon R.layout.main_activity bs lama b3ml kda bideny error.
+        //8albn error 3shan al code al network al mktob t7t mfrood ykon mktob f activity tanya.
+        //73ml testbranch tany awreeky feh shakl al run al 3ady mfrood ykon 3amel ezay.
 
         //TODO: DO NOT DELETE THE CODE BELOW, IT IS COMMENTED FOR TEST PURPOSES.
         //switches you to the sign up layout
