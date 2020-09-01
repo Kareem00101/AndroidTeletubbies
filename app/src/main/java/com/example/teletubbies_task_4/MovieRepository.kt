@@ -4,9 +4,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-//TODO: review the need of using movieLang as a variable.
-//TODO: movieLang variable might just be an extra.
-//TODO: code documentation
+//TODO: review the need of using movieLang as a variable. //InComplete
+//TODO: movieLang variable might just be an extra.       //InComplete
+//TODO: code documentation                              //Complete
 
 object MovieRepository {
 
