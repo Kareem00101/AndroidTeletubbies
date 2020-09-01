@@ -70,7 +70,7 @@
         tools:text="release" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleOfMovie"
         android:layout_width="96dp"
         android:layout_height="21dp"
         android:layout_marginStart="10dp"

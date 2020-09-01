@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity(), MovieRepository.MovieCallBack {
     //Binding data function, necessary for simple test.
     private fun bindMoviesData(movie: MovieResponse)
     {
+        titleOfMovie.text = movie.resultsList[0].title
         releaseDate.text = movie.resultsList[0].release
         ratingOfMovie.text = movie.resultsList[0].rating.toString()
         languageOfMovie.text = movie.resultsList[0].language

@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.item_note.view.*
 
 class NoteViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
     val moviePoster :ImageView = itemView.posterPortrait
-    val movieTitle : TextView = itemView.title
+    val movieTitle : TextView = itemView.titleOfMovie
     val movieRating : TextView = itemView.ratingOfMovie
     val movieLanguage : TextView = itemView.languageOfMovie
     val movieRelease : TextView = itemView.releaseDate
