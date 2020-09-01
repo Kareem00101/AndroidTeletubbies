@@ -2,9 +2,6 @@ package com.example.teletubbies_task_4
 
 import com.google.gson.annotations.SerializedName
 
-//https://api.themoviedb.org/3/movie/popular?api_key=4b7ad36f69f80aa34703d042a53836e4&language=en-US&page=1
-//&language=en-US&page=1  this part is optional
-
 
 data class MovieResponse(
 
@@ -39,6 +36,11 @@ data class MovieDetails(
     val adult: Boolean
 
 )
+
+//TODO:choose whether you want to use the configuration API or use the constant URL to get pictures
+
+//TODO:If you choose the constant method delete the @GET configuration in the ApiInterface and the ImageDetails class below
+
 
 // This class is for the configuration API which I added so that the poster and backdrop paths are cpmplete.
 

@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface ApiInterface {
 
-        @GET("/movie/popular")        // if an error occurred the / at the beginning maybe the problem
+        @GET("movie/popular")
         fun getMovie(
 
             @Query("api_key")apiKey: String,
@@ -15,13 +15,20 @@ interface ApiInterface {
 
         ): Call<MovieResponse>
 
-    @GET("/configuration")          // if an error occurred the / at the beginning maybe the problem
+
+    //TODO:choose whether you want to use the configuration API or use the constant URL to get pictures
+
+    //TODO:If you choose the constant method delete the @GET configuration below and the ImageDetails in MovieResponse file
+
+    @GET("configuration")
     fun config (
 
         @Query("api_key") apiKey: String,
     ): Call<ImageDetails>
 
     }
+
+
 
 
 //Popular Movie
