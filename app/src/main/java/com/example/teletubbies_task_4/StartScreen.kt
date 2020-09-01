@@ -5,27 +5,29 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_start_screen.*
 
-class startScreen : AppCompatActivity() {
+class StartScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Amazing code below good job Aliaa and Haidy!
         setContentView(R.layout.activity_start_screen)
-       imageView3.alpha= 0f
+        imageView3.alpha= 0f
         imageView3.animate().setDuration(3000).alpha(1f).withEndAction {
-            val i = Intent (this@startScreen, MainActivity::class.java)
+            val i = Intent (this@StartScreen, MainActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
             finish()
         }
         textView5.alpha= 0f
         textView5.animate().setDuration(3000).alpha(1f).withEndAction {
-            val i = Intent (this@startScreen, MainActivity::class.java)
+            val i = Intent (this@StartScreen, MainActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
             finish()
         }
         textView6.alpha= 0f
         textView6.animate().setDuration(3000).alpha(1f).withEndAction {
-            val i = Intent (this@startScreen, MainActivity::class.java)
+            val i = Intent (this@StartScreen, MainActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
             finish()

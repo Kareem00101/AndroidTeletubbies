@@ -9,6 +9,8 @@ class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
+
+        //Sign in button in sign up switches you back to sign in layout.
         textView_signIn.setOnClickListener {
             val intent = Intent (this@MainActivity2, MainActivity::class.java)
             startActivity(intent)
