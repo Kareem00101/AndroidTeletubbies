@@ -3,6 +3,8 @@ package com.example.teletubbies_task_4
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_note.view.*
 
 //An adapter class is very necessary for the functioning of the recycler view, as it links the data
 //from the data source to the item view holder holder.
@@ -28,6 +30,7 @@ class MovieAdapter (private val movieList: List<MovieDetails>) : RecyclerView.Ad
         holder.movieRating.text   = iDunKnow.rating.toString()
         holder.movieRelease.text  = iDunKnow.release
         holder.movieTitle.text    = iDunKnow.title
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/${iDunKnow.posterPortrait}").into(holder.moviePoster)
     }
 
     //this functions returns the list size.

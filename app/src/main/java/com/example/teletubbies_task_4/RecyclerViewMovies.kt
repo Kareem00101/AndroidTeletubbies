@@ -44,7 +44,8 @@ class RecyclerViewMovies : AppCompatActivity(), MovieRepository.MovieCallBack  {
         }
 
         //Designing recycler view and linking it to the adapter.
-        main_recycler.layoutManager = LinearLayoutManager(this@RecyclerViewMovies, LinearLayoutManager.VERTICAL, false )
+        main_recycler.layoutManager = LinearLayoutManager(this@RecyclerViewMovies,
+            LinearLayoutManager.VERTICAL, false )
         main_recycler.adapter = MovieAdapter(displayList)
     }
 
@@ -59,5 +60,4 @@ class RecyclerViewMovies : AppCompatActivity(), MovieRepository.MovieCallBack  {
 
         Toast.makeText(this@RecyclerViewMovies, errorMsg, Toast.LENGTH_LONG).show()
     }
-
 }
