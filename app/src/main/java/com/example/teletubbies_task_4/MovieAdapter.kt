@@ -1,10 +1,14 @@
 package com.example.teletubbies_task_4
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_note.view.*
+import kotlinx.android.synthetic.main.movie_details.view.*
 
 //An adapter class is very necessary for the functioning of the recycler view, as it links the data
 //from the data source to the item view holder holder.
@@ -29,10 +33,18 @@ class MovieAdapter (private val movieList: List<MovieDetails>) : RecyclerView.Ad
         //In order to generate a fully working image URL, you'll need 3 pieces of data.
         //Those pieces are a base_url, a file_size and a file_path.
         Picasso.get().load("https://image.tmdb.org/t/p/w500/${iDunKnow.posterPortrait}").into(holder.moviePoster)
+
+        //For second screen
+        //val holder2: MovieDescriptionHolder
+        //holder2.movieOverview.text = iDunKnow.description
     }
 
     //this functions returns the list size.
     override fun getItemCount(): Int {
        return movieList.size
+    }
+    class MovieDescriptionHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
+        //variables referencing to the item_note layout views.
+        val movieOverview: TextView = itemView.movieOverviewText
     }
 }
