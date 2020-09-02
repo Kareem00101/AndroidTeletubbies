@@ -41,10 +41,10 @@ import kotlinx.android.synthetic.main.item_note.*
 //bs mthy2ly mmkn n3ml list gowa movieDetails ykon feha imageDetails.
 
 
-class MainActivity : AppCompatActivity(), MovieRepository.MovieCallBack {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recyclerview_movies)
+        setContentView(R.layout.activity_main)
 
         //TODO: READ BELOW! @NardineYousry.
         //error in the code above mfrood tkon R.layout.main_activity bs lama b3ml kda bideny error.
@@ -53,67 +53,21 @@ class MainActivity : AppCompatActivity(), MovieRepository.MovieCallBack {
 
         //TODO: DO NOT DELETE THE CODE BELOW, IT IS COMMENTED FOR TEST PURPOSES.
         //switches you to the sign up layout
-        /*textView_signUp.setOnClickListener {
-        val intent = Intent(this@MainActivity, MainActivity2::class.java)
+        textView_signUp.setOnClickListener {
+            val intent = Intent(this@MainActivity, MainActivity2::class.java)
             startActivity(intent)
         }
         //opens the activity that shows you the APP
-       button_Preview.setOnClickListener {
+        button_Preview.setOnClickListener {
             val intent = Intent(this@MainActivity, RecyclerViewMovies::class.java)
             startActivity(intent)
-        }*/
-        //Write your network code here
-        //Write your network code here
-        //Write your network code here
-
-        requestMoviesData("English")
-
-
-    }
-
-    private fun requestMoviesData(movieLang: String = "English")
-    {
-        //TODO: This tag
-        MovieRepository.requestMovieData(movieLang, this)
-    }
-
-    //Binding data function, necessary for simple test only use this function if you change
-    //setContentView(R.layout.item_movies)
-    private fun bindMoviesData(movie: MovieResponse)
-    {
-        titleOfMovie.text = movie.resultsList[0].title
-        releaseDate.text = movie.resultsList[0].release
-        ratingOfMovie.text = movie.resultsList[0].rating.toString()
-        languageOfMovie.text = movie.resultsList[0].language
-
-    }
-
-    private fun bindMoviesDataWithAdapter(movie: MovieResponse)
-    {
-        val displayList = ArrayList<MovieDetails>()
-        for(b in movie.resultsList)
-        {
-            displayList.add(b)
         }
-
-        //TODO: Is this tag correct?
-        main_recycler.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false )
-        //TODO: WHAT TO PASS! :(
-        main_recycler.adapter = MovieAdapter(displayList)
-    }
-
-
-
-
-
-    //MovieCallBack members.
-    override fun onMovieReady(movie: MovieResponse) {
-        //calling data binding function.
-        bindMoviesDataWithAdapter(movie)
-    }
-
-    override fun onMovieError(errorMsg: String) {
-        //TODO: check which activity ???
-        Toast.makeText(this@MainActivity, errorMsg, Toast.LENGTH_LONG).show()
     }
 }
+        //Write your network code here
+        //Write your network code here
+        //Write your network code here
+
+
+
+
