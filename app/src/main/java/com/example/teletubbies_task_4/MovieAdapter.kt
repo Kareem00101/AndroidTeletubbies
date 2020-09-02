@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_details.view.*
@@ -39,8 +38,10 @@ class MovieAdapter(private val movieList: List<MovieDetails>) : RecyclerView.Ada
         //For second screen
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MovieDetailsActivity::class.java)
-            //intent.putExtra("hi",movieList.get(position))
+            //intent.putExtra(movieList)[position]
             holder.itemView.context.startActivity(intent)
+            val holder2: MovieDescriptionHolder
+            //holder2.movieOverview.text = iDunKnow.description
         }
     }
 
@@ -48,7 +49,7 @@ class MovieAdapter(private val movieList: List<MovieDetails>) : RecyclerView.Ada
     override fun getItemCount(): Int {
        return movieList.size
     }
-    class MovieDescriptionHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
+     class MovieDescriptionHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
         //variables referencing to the item_note layout views.
         val movieOverview: TextView = itemView.movieOverviewText
     }
