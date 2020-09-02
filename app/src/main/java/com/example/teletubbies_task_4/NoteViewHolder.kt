@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_note.view.*
 
 class NoteViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
+    //variables referencing to the item_note layout views.
     val moviePoster :ImageView = itemView.posterPortrait
     val movieTitle : TextView = itemView.titleOfMovie
     val movieRating : TextView = itemView.ratingOfMovie

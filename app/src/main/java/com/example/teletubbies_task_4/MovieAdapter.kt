@@ -19,17 +19,15 @@ class MovieAdapter (private val movieList: List<MovieDetails>) : RecyclerView.Ad
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val iDunKnow = movieList.get(position)
 
-        //The code below was for testing purposes.
-        /*holder.movieLanguage.text = iDunKnow.resultsList[position].language
-        holder.movieRating.text   = iDunKnow.resultsList[position].rating.toString()
-        holder.movieRelease.text  = iDunKnow.resultsList[position].release
-        holder.movieTitle.text    = iDunKnow.resultsList[position].title*/
-
         //Binding movieDetails with the item_note through the adapter.
         holder.movieLanguage.text = iDunKnow.language
         holder.movieRating.text   = iDunKnow.rating.toString()
         holder.movieRelease.text  = iDunKnow.release
         holder.movieTitle.text    = iDunKnow.title
+
+        //Binding images using Picasso.
+        //In order to generate a fully working image URL, you'll need 3 pieces of data.
+        //Those pieces are a base_url, a file_size and a file_path.
         Picasso.get().load("https://image.tmdb.org/t/p/w500/${iDunKnow.posterPortrait}").into(holder.moviePoster)
     }
 

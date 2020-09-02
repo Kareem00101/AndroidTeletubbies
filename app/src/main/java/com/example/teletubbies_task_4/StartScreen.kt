@@ -9,7 +9,6 @@ class StartScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //Amazing code below good job Aliaa and Haidy!
         setContentView(R.layout.activity_start_screen)
         imageView3.alpha= 0f
         imageView3.animate().setDuration(3000).alpha(1f).withEndAction {

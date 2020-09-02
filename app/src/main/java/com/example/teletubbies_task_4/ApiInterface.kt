@@ -10,15 +10,14 @@ interface ApiInterface {
         fun getMovie(
 
             @Query("api_key")apiKey: String,
-            @Query("language") language: String= "en_US",         //These 2 are optional.
+            @Query("language") language: String= "en_US",     //These 2 are optional.
             //@Query("page") page: Int
 
         ): Call<MovieResponse>
 
 
-    //TODO:choose whether you want to use the configuration API or use the constant URL to get pictures
-
-    //TODO:If you choose the constant method delete the @GET configuration below and the ImageDetails in MovieResponse file
+    //choose whether you want to use the configuration API or use the constant URL to get pictures
+    //If you choose the constant method delete the @GET configuration below and the ImageDetails in MovieResponse file
 
     @GET("configuration")
     fun config (
@@ -27,8 +26,6 @@ interface ApiInterface {
     ): Call<ImageDetails>
 
     }
-
-
 
 
 //Popular Movie

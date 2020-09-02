@@ -13,37 +13,32 @@ data class MovieResponse(
 
 data class MovieDetails(
 //Main Data
-    @SerializedName("title")               //Movie Name
+    @SerializedName("title")                //Movie Title
     val title: String,
-    @SerializedName("poster_path")         //Movie Picture in screen1
+    @SerializedName("poster_path")          //Movie Picture
     val posterPortrait: String,
-    @SerializedName("vote_average")
+    @SerializedName("vote_average")         //Movie average voting
     val rating: Double,
-    @SerializedName("original_language")   //we should add a Language: next to it
+    @SerializedName("original_language")    //Movie Language
     val language: String,
-    @SerializedName("release_date")
+    @SerializedName("release_date")        //Movie Release Date
     val release: String,
 
 //Data for the bonus
 
-    @SerializedName("backdrop_path")       //Movie Picture in screen 2 after selecting Movie to view description
+    @SerializedName("backdrop_path")
     val pictureLandscape: String,
     @SerializedName("overview")
     val description: String,
     @SerializedName("vote_count")
     val votes: Int,
-    @SerializedName("adult")               //We can make a message or an adult only icon to appear when true
+    @SerializedName("adult")
     val adult: Boolean
 
 )
 
-//TODO:choose whether you want to use the configuration API or use the constant URL to get pictures
-
-//TODO:If you choose the constant method delete the @GET configuration in the ApiInterface and the ImageDetails class below
-
 
 // This class is for the configuration API which I added so that the poster and backdrop paths are complete.
-
 data class ImageDetails(
     @SerializedName("secure_base_url")
     val baseURL: String,
