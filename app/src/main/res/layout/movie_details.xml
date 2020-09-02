@@ -10,14 +10,15 @@
         android:id="@+id/movieOverviewText"
         android:layout_width="409dp"
         android:layout_height="118dp"
-        android:layout_marginBottom="605dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="15dp"
         android:paddingTop="40dp"
-        tools:text="Movie Overview"
+        android:text="Movie Overview"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,10 +31,12 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="339dp"
         android:layout_marginBottom="565dp"
-        android:text="TextView"
+        tools:text="TextView"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movieOverviewText" />
+        app:layout_constraintTop_toBottomOf="@+id/movieOverviewText"
+        app:layout_constraintVertical_bias="0.123" />
 </androidx.constraintlayout.widget.ConstraintLayout>

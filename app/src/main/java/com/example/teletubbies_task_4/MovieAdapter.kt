@@ -1,18 +1,19 @@
 package com.example.teletubbies_task_4
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_note.view.*
 import kotlinx.android.synthetic.main.movie_details.view.*
+
 
 //An adapter class is very necessary for the functioning of the recycler view, as it links the data
 //from the data source to the item view holder holder.
-class MovieAdapter (private val movieList: List<MovieDetails>) : RecyclerView.Adapter<NoteViewHolder>()
+class MovieAdapter(private val movieList: List<MovieDetails>) : RecyclerView.Adapter<NoteViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -34,9 +35,13 @@ class MovieAdapter (private val movieList: List<MovieDetails>) : RecyclerView.Ad
         //Those pieces are a base_url, a file_size and a file_path.
         Picasso.get().load("https://image.tmdb.org/t/p/w500/${iDunKnow.posterPortrait}").into(holder.moviePoster)
 
+
         //For second screen
-        //val holder2: MovieDescriptionHolder
-        //holder2.movieOverview.text = iDunKnow.description
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, MovieDetailsActivity::class.java)
+            //intent.putExtra("hi",movieList.get(position))
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     //this functions returns the list size.
