@@ -42,7 +42,7 @@ data class MovieDetails(
 //TODO:If you choose the constant method delete the @GET configuration in the ApiInterface and the ImageDetails class below
 
 
-// This class is for the configuration API which I added so that the poster and backdrop paths are cpmplete.
+// This class is for the configuration API which I added so that the poster and backdrop paths are complete.
 
 data class ImageDetails(
     @SerializedName("secure_base_url")

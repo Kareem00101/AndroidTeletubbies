@@ -4,19 +4,17 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-//TODO: review the need of using movieLang as a variable. //InComplete
-//TODO: movieLang variable might just be an extra.       //InComplete
-//TODO: code documentation                              //Complete
 
 object MovieRepository {
 
     private val apiServices: ApiInterface by lazy {
         ApiClient.getClient().create(ApiInterface::class.java)
     }
-
+    //variables we need to call the get from the APIinterface.
     private const val apiKey = "4b7ad36f69f80aa34703d042a53836e4"
     private var movieLang = "English"
 
+    //In case of a successful response this variable should carry the response.body.
     private lateinit var moviesData: MovieResponse
 
     fun requestMovieData(lang: String = movieLang,callback: MovieCallBack )
