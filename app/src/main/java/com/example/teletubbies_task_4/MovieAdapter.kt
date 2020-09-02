@@ -42,6 +42,8 @@ class MovieAdapter(private val movieList: List<MovieDetails>) : RecyclerView.Ada
             holder.itemView.context.startActivity(intent)
             val holder2: MovieDescriptionHolder
             //holder2.movieOverview.text = iDunKnow.description
+            //holder2 = MovieDescriptionHolder()
+            //bindSecondScreenData(holder2, iDunKnow)
         }
     }
 
@@ -52,5 +54,9 @@ class MovieAdapter(private val movieList: List<MovieDetails>) : RecyclerView.Ada
      class MovieDescriptionHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
         //variables referencing to the item_note layout views.
         val movieOverview: TextView = itemView.movieOverviewText
+    }
+    private fun bindSecondScreenData(holder2: MovieDescriptionHolder, x: MovieDetails)
+    {
+        holder2.movieOverview.text = x.description
     }
 }
