@@ -23,6 +23,15 @@ class MovieDetailsActivity : AppCompatActivity(), MovieRepository.MovieCallBack 
     {
         movieOverviewText.text=movie.resultsList[0].description
     }
+    private fun bindMoviesDataWithVariety(movie: MovieResponse) {
+        val displayList = ArrayList<MovieDetails>()
+        for (b in movie.resultsList) {
+            displayList.add(b)
+        }
+        displayList.forEach {
+            movieOverviewText.text = it.description
+        }
+    }
 
     override fun onMovieReady(movie: MovieResponse) {
         bindMoviesData(movie)
