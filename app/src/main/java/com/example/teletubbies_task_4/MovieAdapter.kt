@@ -21,18 +21,18 @@ class MovieAdapter(private val movieList: List<MovieDetails>) : RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        val iDunKnow = movieList.get(position)
+        val movieLinker = movieList.get(position)
 
         //Binding movieDetails with the item_note through the adapter.
-        holder.movieLanguage.text = iDunKnow.language
-        holder.movieRating.text   = iDunKnow.rating.toString()
-        holder.movieRelease.text  = iDunKnow.release
-        holder.movieTitle.text    = iDunKnow.title
+        holder.movieLanguage.text = movieLinker.language
+        holder.movieRating.text   = movieLinker.rating.toString()
+        holder.movieRelease.text  = movieLinker.release
+        holder.movieTitle.text    = movieLinker.title
 
         //Binding images using Picasso.
         //In order to generate a fully working image URL, you'll need 3 pieces of data.
         //Those pieces are a base_url, a file_size and a file_path.
-        Picasso.get().load("https://image.tmdb.org/t/p/w500/${iDunKnow.posterPortrait}").into(holder.moviePoster)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/${movieLinker.posterPortrait}").into(holder.moviePoster)
 
 
         //For second screen
@@ -40,7 +40,7 @@ class MovieAdapter(private val movieList: List<MovieDetails>) : RecyclerView.Ada
             val intent = Intent(holder.itemView.context, MovieDetailsActivity::class.java)
             //intent.putExtra(movieList)[position]
             holder.itemView.context.startActivity(intent)
-            val holder2: MovieDescriptionHolder
+            //val holder2: MovieDescriptionHolder
             //holder2.movieOverview.text = iDunKnow.description
             //holder2 = MovieDescriptionHolder()
             //bindSecondScreenData(holder2, iDunKnow)
