@@ -36,31 +36,18 @@ class MovieAdapter(private val movieList: List<MovieDetails>) : RecyclerView.Ada
         Picasso.get().load("https://image.tmdb.org/t/p/w500/${movieLinker.posterPortrait}").into(holder.moviePoster)
 
 
-        //For second screen
+        //For second screen ( movie description screen )
         val bundle: Bundle = Bundle()
         bundle.putString("movie_description", movieLinker.description)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MovieDetailsActivity::class.java)
-            //intent.putExtra(movieList)[position]
             intent.putExtras(bundle)
             holder.itemView.context.startActivity(intent)
-            //val holder2: MovieDescriptionHolder
-            //holder2.movieOverview.text = iDunKnow.description
-            //holder2 = MovieDescriptionHolder()
-            //bindSecondScreenData(holder2, iDunKnow)
+
         }
     }
-
     //this functions returns the list size.
     override fun getItemCount(): Int {
        return movieList.size
-    }
-     class MovieDescriptionHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
-        //variables referencing to the item_note layout views.
-        val movieOverview: TextView = itemView.movieOverviewText
-    }
-    private fun bindSecondScreenData(holder2: MovieDescriptionHolder, x: MovieDetails)
-    {
-        holder2.movieOverview.text = x.description
     }
 }
