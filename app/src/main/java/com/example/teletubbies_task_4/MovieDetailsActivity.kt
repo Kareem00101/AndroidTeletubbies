@@ -3,6 +3,7 @@ package com.example.teletubbies_task_4
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.widget.Toast
 import kotlinx.android.synthetic.main.item_note.*
 import kotlinx.android.synthetic.main.movie_details.*
@@ -13,8 +14,10 @@ class MovieDetailsActivity() : AppCompatActivity(), MovieRepository.MovieCallBac
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.movie_details)
-        requestMoviesData("English")
-        position++
+        val movieOverview : String? = intent.extras?.getString("movie_description")
+        movieOverviewText.text = Html.fromHtml("<b>MovieDescription:</b>$movieOverview")
+       // requestMoviesData("English")
+        //position++
 
     }
     var position = 1
