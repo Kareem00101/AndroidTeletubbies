@@ -1,8 +1,10 @@
 package com.example.teletubbies_task_4
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import java.util.*
 
-import androidx.lifecycle.ViewModel
 
-class MainViewModel: ViewModel() {
-
+class MovieViewModel(application: Application) : AndroidViewModel(application) {
 }
