@@ -18,19 +18,19 @@ class MainViewModel : ViewModel(), MovieRepository.MovieCallBack {
 
     private lateinit var movieData: MovieResponse
 
-    private var currentMovieName = "Title"
+    private var currentMovieLang = "English"
 
-    fun loadMovieData(movieName: String = "") {
+    fun loadMovieData(movieLang: String = "") {
 
-        if (movieName == currentMovieName && this::movieData.isInitialized) {
+        if (movieLang == currentMovieLang && this::movieData.isInitialized) {
             _movieLiveData.value = movieData
             return
         }
 
-        if (movieName.isNotEmpty())
-            currentMovieName = movieName
+        if (movieLang.isNotEmpty())
+            currentMovieLang = movieLang
 
-        MovieRepository.requestMovieData(currentMovieName, this)
+        MovieRepository.requestMovieData(currentMovieLang, this)
     }
 
     override fun onMovieReady(movie: MovieResponse) {

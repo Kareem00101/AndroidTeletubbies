@@ -13,8 +13,9 @@ import kotlinx.android.synthetic.main.item_note.*
 
 class MainActivity : AppCompatActivity(){
 
-
-    private val mainViewModel: MainViewModel by viewModels()
+    //SUPER ERRORS!!!
+    //COMMENTED CAUSE OF SUPER ERRORS!
+    //private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -12,34 +12,42 @@ import kotlinx.android.synthetic.main.item_note.*
 import kotlinx.android.synthetic.main.movie_details.*
 
 //This is the activity that contains the recycler view.
-class RecyclerViewMovies : AppCompatActivity(), MovieRepository.MovieCallBack  {
+class RecyclerViewMovies : AppCompatActivity() {
     private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
-        requestMoviesData("English")
+
+        //This was necessary before making the MVVM.
+        //requestMoviesData("English")
+
+        //MVVM PART START HERE
         mainViewModel.movieLiveData
             .observe(this, {
-                button_Preview.isEnabled = true
+                //button_Preview.isEnabled = true
                 bindMoviesDataWithAdapter(it)
             })
 
         mainViewModel.onError.observe(this, {
-            onMovieError(it)
+            handleMovieError(it)
         })
 
         mainViewModel.loadMovieData()
+        //MVVM PART ENDS HERE
 
-        button_Preview.setOnClickListener {
-        }
+        /*button_Preview.setOnClickListener {
+        }*/
 
     }
-    private fun requestMoviesData(movieLang: String = "English")
+    //Commented for a while
+    //Commented for a while
+    //Commented for a while
+    /*private fun requestMoviesData(movieLang: String = "English")
     {
 
         MovieRepository.requestMovieData(movieLang, this)
-    }
+    }*/
 
     //Binding data function, necessary for simple test only use this function if you change
     //setContentView(R.layout.item_movies)
@@ -70,8 +78,9 @@ class RecyclerViewMovies : AppCompatActivity(), MovieRepository.MovieCallBack  {
     }
 
 
+    //Previous Code Interface Implementation
     //MovieCallBack members.
-    override fun onMovieReady(movie: MovieResponse) {
+    /*override fun onMovieReady(movie: MovieResponse) {
         //calling data binding function.
         bindMoviesDataWithAdapter(movie)
     }
@@ -80,6 +89,12 @@ class RecyclerViewMovies : AppCompatActivity(), MovieRepository.MovieCallBack  {
 
     //In case of an error.
     override fun onMovieError(errorMsg: String) {
+
+        Toast.makeText(this@RecyclerViewMovies, errorMsg, Toast.LENGTH_LONG).show()
+    }*/
+
+    //New one instead of the interface.
+    private fun handleMovieError(errorMsg: String) {
 
         Toast.makeText(this@RecyclerViewMovies, errorMsg, Toast.LENGTH_LONG).show()
     }

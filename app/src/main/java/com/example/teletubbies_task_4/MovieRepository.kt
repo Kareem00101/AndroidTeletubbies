@@ -15,16 +15,16 @@ object MovieRepository {
     private var movieLang = "English"
 
     //In case of a successful response this variable should carry the response.body.
-    private lateinit var moviesData: MovieResponse
+    //private lateinit var moviesData: MovieResponse
 
     fun requestMovieData(lang: String = movieLang,callback: MovieCallBack )
     {
-        if(this::moviesData.isInitialized && lang == movieLang)
+        /*if(this::moviesData.isInitialized && lang == movieLang)
         {
             //checking if the passed data is suitable for calling.
             callback.onMovieReady(moviesData)
             return
-        }
+        }*/
         //in order to keep the language as it is, in case of rotating.
         //the whole language code might be unnecessary but we used it for testing purposes.
         movieLang = lang
@@ -43,7 +43,7 @@ object MovieRepository {
                     {
                         println("Response Successful")
                         //passing the response data to the var
-                        moviesData = response.body()!!
+                        val moviesData = response.body()!!
                         callback.onMovieReady(moviesData)
                     } else if(response.code() in 400..404) {
                         //in case of an error, helps identifying the error.
