@@ -33,8 +33,8 @@ class MainViewModel : ViewModel(), MovieRepository.MovieCallBack {
         MovieRepository.requestMovieData(currentMovieName, this)
     }
 
-    override fun onMovieReady(weather: MovieResponse) {
-        movieData = weather
+    override fun onMovieReady(movie: MovieResponse) {
+        movieData = movie
         _movieLiveData.value = movieData
     }
 
