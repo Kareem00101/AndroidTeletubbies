@@ -3,20 +3,36 @@ package com.example.teletubbies_task_4
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_recyclerview_movies.*
 import kotlinx.android.synthetic.main.item_note.*
+import kotlinx.android.synthetic.main.movie_details.*
 
 //This is the activity that contains the recycler view.
 class RecyclerViewMovies : AppCompatActivity(), MovieRepository.MovieCallBack  {
+    private val mainViewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
-
         requestMoviesData("English")
+        mainViewModel.movieLiveData
+            .observe(this, {
+                button_Preview.isEnabled = true
+                bindMoviesDataWithAdapter(it)
+            })
 
+        mainViewModel.onError.observe(this, {
+            onMovieError(it)
+        })
 
+        mainViewModel.loadMovieData()
+
+        button_Preview.setOnClickListener {
+        }
 
     }
     private fun requestMoviesData(movieLang: String = "English")
@@ -35,6 +51,8 @@ class RecyclerViewMovies : AppCompatActivity(), MovieRepository.MovieCallBack  {
         languageOfMovie.text = movie.resultsList[0].language
 
     }
+
+
 
     //This functions links data source with the adapter.
     private fun bindMoviesDataWithAdapter(movie: MovieResponse)
@@ -57,9 +75,13 @@ class RecyclerViewMovies : AppCompatActivity(), MovieRepository.MovieCallBack  {
         //calling data binding function.
         bindMoviesDataWithAdapter(movie)
     }
+
+
+
     //In case of an error.
     override fun onMovieError(errorMsg: String) {
 
         Toast.makeText(this@RecyclerViewMovies, errorMsg, Toast.LENGTH_LONG).show()
     }
+
 }
