@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teletubbies_task_4.R
 import com.example.teletubbies_task_4.data.models.remote.MovieDetails
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
+import com.example.teletubbies_task_4.data.ui.Movie
 import kotlinx.android.synthetic.main.activity_recyclerview_movies.*
 import kotlinx.android.synthetic.main.item_note.*
 
@@ -63,7 +64,7 @@ class RecyclerViewMovies : AppCompatActivity() {
 
 
     //This functions links data source with the adapter.
-    private fun bindMoviesDataWithAdapter(movie: MovieResponse)
+    private fun bindMoviesDataWithAdapter(movie: List<Movie>)
     {
         val displayList = ArrayList<MovieDetails>()
         for(b in movie.resultsList)
