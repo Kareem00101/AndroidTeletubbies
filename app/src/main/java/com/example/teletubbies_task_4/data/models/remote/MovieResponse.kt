@@ -1,4 +1,4 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.data.models.remote
 
 import com.google.gson.annotations.SerializedName
 

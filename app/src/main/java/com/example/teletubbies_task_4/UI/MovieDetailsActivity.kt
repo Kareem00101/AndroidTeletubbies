@@ -1,11 +1,9 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.UI
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
-import android.widget.Toast
-import kotlinx.android.synthetic.main.item_note.*
+import com.example.teletubbies_task_4.R
 import kotlinx.android.synthetic.main.movie_details.*
 
 //TODO: always getting same movie data, on every movie.

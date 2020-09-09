@@ -1,14 +1,13 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.UI
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.teletubbies_task_4.R
+import com.example.teletubbies_task_4.data.models.remote.MovieDetails
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.movie_details.view.*
 
 
 //An adapter class is very necessary for the functioning of the recycler view, as it links the data

@@ -1,4 +1,4 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.UI
 
 import android.content.Intent
 import android.view.View

@@ -1,8 +1,9 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.teletubbies_task_4.R
 import kotlinx.android.synthetic.main.activity_start_screen.*
 
 class StartScreen : AppCompatActivity() {

@@ -1,4 +1,7 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.data.Repository
+import com.example.teletubbies_task_4.data.models.ApiInterface
+import com.example.teletubbies_task_4.data.Network.ApiClient
+import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,7 +20,7 @@ object MovieRepository {
     //In case of a successful response this variable should carry the response.body.
     //private lateinit var moviesData: MovieResponse
 
-    fun requestMovieData(lang: String = movieLang,callback: MovieCallBack )
+    fun requestMovieData(lang: String = movieLang, callback: MovieCallBack)
     {
         /*if(this::moviesData.isInitialized && lang == movieLang)
         {

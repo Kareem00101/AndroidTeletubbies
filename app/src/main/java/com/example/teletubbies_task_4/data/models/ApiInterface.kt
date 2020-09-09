@@ -1,5 +1,7 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.data.models
 
+import com.example.teletubbies_task_4.data.models.remote.ImageDetails
+import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,14 +1,11 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.teletubbies_task_4.R
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_recyclerview_movies.*
-import kotlinx.android.synthetic.main.item_note.*
 
 
 class MainActivity : AppCompatActivity(){

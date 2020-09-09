@@ -1,4 +1,4 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.data.Network
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

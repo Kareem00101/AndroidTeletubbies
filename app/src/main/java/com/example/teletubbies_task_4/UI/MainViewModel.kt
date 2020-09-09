@@ -1,8 +1,10 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.UI
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.teletubbies_task_4.data.Repository.MovieRepository
+import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 
 class MainViewModel : ViewModel(), MovieRepository.MovieCallBack {
 
