@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
+
     <TextView
         android:id="@+id/movieOverviewTitle"
         android:layout_width="333dp"
         android:layout_height="97dp"
         android:gravity="center"
-        android:includeFontPadding="false"
+        android:includeFontPadding="true"
         android:text="Movie Overview"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -21,22 +22,45 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.294" />
+        app:layout_constraintVertical_bias="0.093" />
+
+    <RatingBar
+        android:id="@+id/itemRatingBar"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foregroundGravity="center"
+        android:numStars="6"
+        android:rating="4.5"
+        android:theme="@style/RatingBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24" />
 
     <TextView
         android:id="@+id/movieOverviewText"
-        android:layout_width="334dp"
-        android:layout_height="124dp"
-        android:paddingStart="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="2dp"
+        android:paddingStart="6dp"
         android:paddingTop="2dp"
-        android:paddingEnd="2dp"
+        android:paddingEnd="6dp"
         android:paddingBottom="2dp"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
+        app:layout_constraintVertical_bias="0.396"
         tools:text="TextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
