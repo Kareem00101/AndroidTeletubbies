@@ -1,6 +1,7 @@
 package com.example.teletubbies_task_4.data
 
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
+import com.example.teletubbies_task_4.data.ui.Movie
 
 class MovieMapper {
 
