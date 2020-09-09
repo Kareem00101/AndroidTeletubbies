@@ -13,6 +13,7 @@ object MovieRepository {
     //variables we need to call the get from the APIinterface.
     private const val apiKey = "4b7ad36f69f80aa34703d042a53836e4"
     private var movieLang = "English"
+    private val mapper by lazy { MovieMapper() }
 
     //In case of a successful response this variable should carry the response.body.
     //private lateinit var moviesData: MovieResponse
@@ -43,8 +44,8 @@ object MovieRepository {
                     {
                         println("Response Successful")
                         //passing the response data to the var
-                        val moviesData = response.body()!!
-                        callback.onMovieReady(moviesData)
+                        val moviedata = mapper.mapToMovieUi(response.body()!!)
+                        callback.onMovieReady(moviedata)
                     } else if(response.code() in 400..404) {
                         //in case of an error, helps identifying the error.
                         val msg = "an error has occurred"
@@ -68,7 +69,7 @@ object MovieRepository {
     //Main activity must implement the interface.
     interface MovieCallBack
     {
-        fun onMovieReady(movie: MovieResponse)
+        fun onMovieReady(movie: List<Movie>)
         fun onMovieError(errorMsg: String)
     }
 }//end of movieRepository

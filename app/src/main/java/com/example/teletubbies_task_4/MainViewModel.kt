@@ -6,9 +6,11 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel(), MovieRepository.MovieCallBack {
 
-    private val _movieLiveData: MutableLiveData<MovieResponse>
+    private val _movieLiveData: MutableLiveData<List<Movie>>
+    //private val _movieLiveData: MutableLiveData<MovieResponse>
             by lazy { MutableLiveData() }
-    val movieLiveData: LiveData<MovieResponse>
+    val movieLiveData: LiveData<List<Movie>>
+    //val movieLiveData: LiveData<MovieResponse>
         get() = _movieLiveData
 
     private val _onError: MutableLiveData<String>
@@ -16,7 +18,8 @@ class MainViewModel : ViewModel(), MovieRepository.MovieCallBack {
     val onError: LiveData<String>
         get() = _onError
 
-    private lateinit var movieData: MovieResponse
+    private lateinit var movieData: List<Movie>
+    //private lateinit var movieData: MovieResponse
 
     private var currentMovieLang = "English"
 
@@ -33,9 +36,13 @@ class MainViewModel : ViewModel(), MovieRepository.MovieCallBack {
         MovieRepository.requestMovieData(currentMovieLang, this)
     }
 
-    override fun onMovieReady(movie: MovieResponse) {
-        movieData = movie
-        _movieLiveData.value = movieData
+
+    override fun onMovieReady(movie: List<Movie>) {
+    //override fun onMovieReady(movie: MovieResponse) {
+      // movieData = movie
+      // _movieLiveData.value = movieData
+        _movieLiveData.value = movie
+
     }
 
     override fun onMovieError(errorMsg: String) {
