@@ -6,7 +6,7 @@ package com.example.teletubbies_task_4.data.ui
 //@Entity(tableName = "Movie_table")
 data class Movie (
     //@PrimaryKey
-    val id: Long,
+    //val id: Long,
     val title: String,
     val posterPortrait: String,
     val rating: Double,
