@@ -15,6 +15,8 @@ class MovieDetailsActivity() : AppCompatActivity() {
         //The two lines are below are for movie description in the second screen.
         val movieOverview: String? = intent.extras?.getString("movie_description")
         movieOverviewText.text = Html.fromHtml("$movieOverview")
+        val movieTitle : String? = intent.extras?.getString("title")
+        movieOverviewTitle.text= Html.fromHtml("$movieTitle")
 
     }
 }
