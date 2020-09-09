@@ -2,6 +2,7 @@ package com.example.teletubbies_task_4.data.Repository
 import com.example.teletubbies_task_4.data.models.ApiInterface
 import com.example.teletubbies_task_4.data.Network.ApiClient
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
+import com.example.teletubbies_task_4.data.ui.Movie
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -71,7 +72,7 @@ object MovieRepository {
     //Main activity must implement the interface.
     interface MovieCallBack
     {
-        fun onMovieReady(movie: MovieResponse)
+        fun onMovieReady(movie: List<Movie>)
         fun onMovieError(errorMsg: String)
     }
 }//end of movieRepository

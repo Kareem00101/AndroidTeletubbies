@@ -5,12 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.teletubbies_task_4.data.Repository.MovieRepository
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
+import com.example.teletubbies_task_4.data.ui.Movie
 
 class MainViewModel : ViewModel(), MovieRepository.MovieCallBack {
 
-    private val _movieLiveData: MutableLiveData<MovieResponse>
+    private val _movieLiveData: MutableLiveData<List<Movie>>
             by lazy { MutableLiveData() }
-    val movieLiveData: LiveData<MovieResponse>
+    val movieLiveData: LiveData<List<Movie>>
         get() = _movieLiveData
 
     private val _onError: MutableLiveData<String>
@@ -18,7 +19,7 @@ class MainViewModel : ViewModel(), MovieRepository.MovieCallBack {
     val onError: LiveData<String>
         get() = _onError
 
-    private lateinit var movieData: MovieResponse
+    private lateinit var movieData: List<Movie>
 
     private var currentMovieLang = "English"
 
@@ -35,7 +36,7 @@ class MainViewModel : ViewModel(), MovieRepository.MovieCallBack {
         MovieRepository.requestMovieData(currentMovieLang, this)
     }
 
-    override fun onMovieReady(movie: MovieResponse) {
+    override fun onMovieReady(movie: List<Movie>) {
         movieData = movie
         _movieLiveData.value = movieData
     }
