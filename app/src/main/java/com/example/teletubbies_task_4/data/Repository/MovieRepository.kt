@@ -1,4 +1,5 @@
 package com.example.teletubbies_task_4.data.Repository
+import com.example.teletubbies_task_4.data.MovieMapper
 import com.example.teletubbies_task_4.data.models.ApiInterface
 import com.example.teletubbies_task_4.data.Network.ApiClient
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
@@ -17,6 +18,7 @@ object MovieRepository {
     //variables we need to call the get from the APIinterface.
     private const val apiKey = "4b7ad36f69f80aa34703d042a53836e4"
     private var movieLang = "English"
+    private val mapper by lazy { MovieMapper() }
 
     //In case of a successful response this variable should carry the response.body.
     //private lateinit var moviesData: MovieResponse
@@ -47,7 +49,7 @@ object MovieRepository {
                     {
                         println("Response Successful")
                         //passing the response data to the var
-                        val moviesData = response.body()!!
+                        val moviesData = mapper.mapToMovieUi(response.body()!!)
                         callback.onMovieReady(moviesData)
                     } else if(response.code() in 400..404) {
                         //in case of an error, helps identifying the error.
