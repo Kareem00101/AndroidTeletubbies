@@ -39,6 +39,7 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<No
         //For second screen ( movie description screen )
         val bundle: Bundle = Bundle()
         bundle.putString("movie_description", movieLinker.description)
+        bundle.putString("title", movieLinker.title)
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MovieDetailsActivity::class.java)
             intent.putExtras(bundle)
