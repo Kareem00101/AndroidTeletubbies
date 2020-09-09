@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teletubbies_task_4.R
 import com.example.teletubbies_task_4.data.models.remote.MovieDetails
+import com.example.teletubbies_task_4.data.ui.Movie
 import com.squareup.picasso.Picasso
 
 
 //An adapter class is very necessary for the functioning of the recycler view, as it links the data
 //from the data source to the item view holder holder.
-class MovieAdapter(private val movieList: List<MovieDetails>) : RecyclerView.Adapter<NoteViewHolder>()
+class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<NoteViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
