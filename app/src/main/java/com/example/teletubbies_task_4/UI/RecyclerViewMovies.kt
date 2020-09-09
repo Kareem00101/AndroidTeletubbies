@@ -67,11 +67,6 @@ class RecyclerViewMovies : AppCompatActivity() {
     private fun bindMoviesDataWithAdapter(movie: List<Movie>)
     {
 
-       // val displayList = ArrayList<MovieDetails>()
-       // for(b in movie)
-      //  {
-         //   displayList.add(b)
-       // }
 
         //Designing recycler view and linking it to the adapter.
         main_recycler.layoutManager = LinearLayoutManager(this@RecyclerViewMovies,
