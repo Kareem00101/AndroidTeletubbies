@@ -24,6 +24,9 @@ data class MovieDetails(
     @SerializedName("release_date")        //Movie Release Date
     val release: String,
 
+    //ID for database
+    @SerializedName("id")
+    val id: Long,
 //Data for the bonus
 
     @SerializedName("backdrop_path")
