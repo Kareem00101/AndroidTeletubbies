@@ -16,7 +16,7 @@ class MovieMapper {
 
         movieResponse.resultsList.forEach {
 
-            Movies.add(Movie(it.title, it.posterPortrait, it.rating, it.language,it.release, it.description))
+            Movies.add(Movie(it.id,it.title, it.posterPortrait, it.rating, it.language,it.release, it.description))
         }
         return Movies
     }

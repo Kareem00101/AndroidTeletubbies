@@ -1,22 +1,22 @@
 package com.example.teletubbies_task_4.data.database
 
-import androidx.room.Dao
-import androidx.room.Insert
+import androidx.room.*
 import com.example.teletubbies_task_4.data.ui.Movie
 
-//add dependency then remove // from the comment and check the interface with class Movie.kt
+//TODO: List or object
+//TODO: Review
 
 @Dao
 interface MovieDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addMovies(movie: List<Movie>)
 
-    //@Query("SELECT * FROM MOVIE")
-    fun getAllForecasts(): List<Movie>
+    @Query("SELECT * FROM Movie_table")
+    fun getAllMovies(): List<Movie>
 
-    //@Delete
-    fun deleteForecast(movie: Movie)
+    @Delete
+    fun deleteMovie(movie: Movie)
 
-    //@Query("DELETE FROM Movie")
+    @Query("DELETE FROM Movie_table")
     fun deleteAll()
 }
