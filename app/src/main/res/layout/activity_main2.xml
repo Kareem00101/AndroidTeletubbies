@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    tools:context=".UI.MainActivity2"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
     android:background="#000000"
-    tools:context=".UI.MainActivity2">
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
 
     <TextView
         android:layout_marginBottom="65dp"
@@ -15,17 +20,16 @@
         android:text="Already have an account?"
         android:textColor="@color/cardview_light_background"
         android:textSize="14sp"
-        android:layout_marginRight="30dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/Sign_In"
-        app:layout_constraintStart_toStartOf="@id/movie2_l7"
+        app:layout_constraintStart_toStartOf="@id/movie2_l6"
         app:layout_constraintTop_toBottomOf="@id/movie2_l7" />
 
     <Button
         android:id="@+id/movie2_l6"
         android:layout_width="289dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="30dp"
         android:background="#aa1d1d"
         android:clickable="true"
         android:ems="10"
@@ -71,7 +75,6 @@
         android:textColorHint="#b3b3b3"
         app:layout_constraintBottom_toTopOf="@id/movie2_l5"
         app:layout_constraintEnd_toEndOf="@id/movie2_l3"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/movie2_l3"
         app:layout_constraintTop_toBottomOf="@id/movie2_l3" />
 
@@ -124,6 +127,7 @@
         android:id="@+id/movie2_l7"
         android:layout_width="47dp"
         android:layout_height="26dp"
+        android:layout_marginBottom="25dp"
         android:text="-OR-"
         android:textColor="#aa1d1d"
         android:textSize="20sp"
@@ -131,22 +135,23 @@
         app:layout_constraintBottom_toTopOf="@id/movie2_l8"
         app:layout_constraintEnd_toEndOf="@id/movie2_l6"
         app:layout_constraintStart_toStartOf="@id/movie2_l6"
-
         app:layout_constraintTop_toBottomOf="@id/movie2_l6" />
 
     <TextView
         android:id="@+id/Sign_In"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="65dp"
+        android:layout_marginEnd="30dp"
         android:text="Sign In"
         android:textColor="@color/cardview_light_background"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/movie2_l7"
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/movie2_l8"
         app:layout_constraintStart_toEndOf="@id/movie2_l8"
-        app:layout_constraintTop_toBottomOf="@id/movie2_l7"
-        android:layout_marginEnd="30dp" />
+        app:layout_constraintTop_toTopOf="@id/movie2_l8"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
