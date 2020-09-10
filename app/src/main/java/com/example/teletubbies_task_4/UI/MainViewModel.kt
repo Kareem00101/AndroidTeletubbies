@@ -1,5 +1,7 @@
 package com.example.teletubbies_task_4.UI
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +9,8 @@ import com.example.teletubbies_task_4.data.Repository.MovieRepository
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 import com.example.teletubbies_task_4.data.ui.Movie
 
-class MainViewModel : ViewModel(), MovieRepository.MovieCallBack {
+class MainViewModel(application: Application)  : AndroidViewModel(application),
+    MovieRepository.MovieCallBack {
 
     //Notes: A MutableLiveData can be set..
     //Notes: While LiveData cannot be set.
@@ -25,6 +28,11 @@ class MainViewModel : ViewModel(), MovieRepository.MovieCallBack {
 
     private lateinit var movieData: List<Movie>
     private var currentMovieLang = "English"
+
+    init {
+        MovieRepository.createDatabase(application)
+    }
+
 
     //The function below is to be used inside the activity.
     fun loadMovieData(movieLang: String = "") {
