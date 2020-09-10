@@ -27,8 +27,8 @@ data class MovieDetails(
     //ID for database
     @SerializedName("id")
     val id: Long,
-//Data for the bonus
 
+    //Data for the bonus
     @SerializedName("backdrop_path")
     val pictureLandscape: String,
     @SerializedName("overview")
@@ -37,7 +37,6 @@ data class MovieDetails(
     val votes: Int,
     @SerializedName("adult")
     val adult: Boolean
-
 )
 
 

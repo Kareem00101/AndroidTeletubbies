@@ -3,6 +3,7 @@ package com.example.teletubbies_task_4.data
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 import com.example.teletubbies_task_4.data.ui.Movie
 
+//TODO: Should we be using a list?
 class MovieMapper {
 
         fun mapToMovieUi(movieResponse: MovieResponse): List<Movie> {

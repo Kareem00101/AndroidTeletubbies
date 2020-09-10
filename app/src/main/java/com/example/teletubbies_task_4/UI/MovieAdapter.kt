@@ -40,6 +40,7 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<No
         val bundle: Bundle = Bundle()
         bundle.putString("movie_description", movieLinker.description)
         bundle.putString("title", movieLinker.title)
+        //Setting the click listener on the whole item, since we got no buttons.
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MovieDetailsActivity::class.java)
             intent.putExtras(bundle)

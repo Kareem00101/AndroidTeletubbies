@@ -17,14 +17,4 @@ class NoteViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
     val movieLanguage : TextView = itemView.languageOfMovie
     val movieRelease : TextView = itemView.releaseDate
 
-
 }
-/*init {
-    itemView.setOnClickListener {
-        Toast.makeText(
-            itemView.context,
-            "Hello hope it works.",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-}*/

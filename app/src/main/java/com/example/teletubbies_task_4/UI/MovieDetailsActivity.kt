@@ -12,7 +12,8 @@ class MovieDetailsActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.movie_details)
-        //The two lines are below are for movie description in the second screen.
+
+        //The lines are below are for the movie description & name in the second screen.
         val movieOverview: String? = intent.extras?.getString("movie_description")
         movieOverviewText.text = Html.fromHtml("$movieOverview")
         val movieTitle : String? = intent.extras?.getString("title")

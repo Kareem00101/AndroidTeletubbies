@@ -20,9 +20,6 @@ class RecyclerViewMovies : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
 
-        //This was necessary before making the MVVM.
-        //requestMoviesData("English")
-
         //MVVM PART START HERE
         mainViewModel.movieLiveData
             .observe(this, {
@@ -37,58 +34,16 @@ class RecyclerViewMovies : AppCompatActivity() {
         mainViewModel.loadMovieData()
         //MVVM PART ENDS HERE
 
-        /*button_Preview.setOnClickListener {
-        }*/
-
     }
-    //Commented for a while
-    //Commented for a while
-    //Commented for a while
-    /*private fun requestMoviesData(movieLang: String = "English")
-    {
-
-        MovieRepository.requestMovieData(movieLang, this)
-    }*/
-
-    //Binding data function, necessary for simple test only use this function if you change
-    //setContentView(R.layout.item_movies)
-    private fun bindMoviesData(movie: MovieResponse)
-    {
-        titleOfMovie.text = movie.resultsList[0].title
-        releaseDate.text = movie.resultsList[0].release
-        ratingOfMovie.text = movie.resultsList[0].rating.toString()
-        languageOfMovie.text = movie.resultsList[0].language
-
-    }
-
-
 
     //This functions links data source with the adapter.
     private fun bindMoviesDataWithAdapter(movie: List<Movie>)
     {
-
-
         //Designing recycler view and linking it to the adapter.
         main_recycler.layoutManager = LinearLayoutManager(this@RecyclerViewMovies,
             LinearLayoutManager.VERTICAL, false )
         main_recycler.adapter = MovieAdapter(movie)
     }
-
-
-    //Previous Code Interface Implementation
-    //MovieCallBack members.
-    /*override fun onMovieReady(movie: MovieResponse) {
-        //calling data binding function.
-        bindMoviesDataWithAdapter(movie)
-    }
-
-
-
-    //In case of an error.
-    override fun onMovieError(errorMsg: String) {
-
-        Toast.makeText(this@RecyclerViewMovies, errorMsg, Toast.LENGTH_LONG).show()
-    }*/
 
     //New one instead of the interface.
     private fun handleMovieError(errorMsg: String) {

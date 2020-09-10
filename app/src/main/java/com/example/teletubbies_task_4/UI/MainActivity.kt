@@ -10,10 +10,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(){
 
-    //SUPER ERRORS!!!
-    //COMMENTED CAUSE OF SUPER ERRORS!
-    //private val mainViewModel: MainViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

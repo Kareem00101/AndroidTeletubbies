@@ -12,11 +12,10 @@ interface ApiInterface {
         fun getMovie(
 
             @Query("api_key")apiKey: String,
-            @Query("language") language: String = "en_US",     //These 2 are optional.
-            //@Query("page") page: Int
+            @Query("language") language: String = "en_US",     //This is optional.
+            //@Query("page") page: Int                               //This is optional.
 
         ): Call<MovieResponse>
-
 
     //choose whether you want to use the configuration API or use the constant URL to get pictures
     //If you choose the constant method delete the @GET configuration below and the ImageDetails in MovieResponse file
@@ -28,7 +27,6 @@ interface ApiInterface {
     ): Call<ImageDetails>
 
     }
-
 
 //Popular Movie
 //https://api.themoviedb.org/3/movie/popular?api_key=4b7ad36f69f80aa34703d042a53836e4&language=en-US&page=1
