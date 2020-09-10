@@ -3,9 +3,6 @@ package com.example.teletubbies_task_4.data.database
 import androidx.room.*
 import com.example.teletubbies_task_4.data.ui.Movie
 
-//TODO: List or object
-//TODO: Review
-
 @Dao
 interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

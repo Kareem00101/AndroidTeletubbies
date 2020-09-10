@@ -4,7 +4,7 @@ package com.example.teletubbies_task_4.data.ui
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-//TODO: Check how will we be using the id.
+
 @Entity(tableName = "Movie_table")
 data class Movie (
     //We have an ID from our movie response.
