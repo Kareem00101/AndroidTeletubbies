@@ -8,24 +8,24 @@
     tools:context=".UI.MainActivity2">
 
     <TextView
-        android:id="@+id/textView_signIn2"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/movie2_l8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Already have an account?"
         android:textColor="@color/cardview_light_background"
         android:textSize="14sp"
+        android:layout_marginRight="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.146"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.846" />
+        app:layout_constraintEnd_toStartOf="@id/Sign_In"
+        app:layout_constraintStart_toStartOf="@id/movie2_l7"
+        app:layout_constraintTop_toBottomOf="@id/movie2_l7" />
 
     <Button
-        android:id="@+id/Button_SignUP"
+        android:id="@+id/movie2_l6"
         android:layout_width="289dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="5dp"
         android:background="#aa1d1d"
         android:clickable="true"
         android:ems="10"
@@ -33,17 +33,17 @@
         android:inputType="textEmailAddress"
         android:text="  SIGN UP"
         android:textColor="@color/cardview_light_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.788" />
+        app:layout_constraintTop_toBottomOf="@id/movie2_l5"
+        app:layout_constraintBottom_toTopOf="@id/movie2_l7"
+        app:layout_constraintEnd_toEndOf="@id/movie2_l5"
+        app:layout_constraintStart_toStartOf="@id/movie2_l5"
+        />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress6"
+        android:id="@+id/movie2_l5"
         android:layout_width="337dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="45dp"
         android:background="@drawable/background"
         android:ems="10"
         android:inputType="textVisiblePassword"
@@ -51,17 +51,17 @@
         android:hint="Confirm Password"
         android:textColorHint="#b3b3b3"
         android:textColor="#b3b3b3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.659" />
+        app:layout_constraintTop_toBottomOf="@id/movie2_l4"
+        app:layout_constraintBottom_toTopOf="@id/movie2_l6"
+        app:layout_constraintEnd_toEndOf="@id/movie2_l4"
+        app:layout_constraintStart_toStartOf="@id/movie2_l4"
+        />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress5"
+        android:id="@+id/movie2_l4"
         android:layout_width="337dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/background"
         android:ems="10"
         android:inputType="textVisiblePassword"
@@ -69,17 +69,17 @@
         android:hint="Enter Password"
         android:textColorHint="#b3b3b3"
         android:textColor="#b3b3b3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintTop_toBottomOf="@id/movie2_l3"
+        app:layout_constraintBottom_toTopOf="@id/movie2_l5"
+        app:layout_constraintEnd_toEndOf="@id/movie2_l3"
+        app:layout_constraintStart_toStartOf="@id/movie2_l3"
+        />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress4"
+        android:id="@+id/movie2_l3"
         android:layout_width="337dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/background"
         android:ems="10"
         android:inputType="textEmailAddress"
@@ -87,70 +87,67 @@
         android:hint="Enter your email"
         android:textColorHint="#b3b3b3"
         android:textColor="#b3b3b3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394" />
+        app:layout_constraintTop_toBottomOf="@id/movie2_l2"
+        app:layout_constraintBottom_toTopOf="@id/movie2_l4"
+        app:layout_constraintEnd_toEndOf="@id/movie2_l2"
+        app:layout_constraintStart_toStartOf="@id/movie2_l2"
+        />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/movie2_l2"
         android:layout_width="140dp"
         android:layout_height="108dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.177"
+        app:layout_constraintTop_toBottomOf="@id/movie2_l1"
+        app:layout_constraintBottom_toTopOf="@id/movie2_l3"
+        app:layout_constraintEnd_toEndOf="@id/movie2_l1"
+        app:layout_constraintStart_toStartOf="@id/movie2_l1"
         app:srcCompat="@drawable/popcorn_33" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/movie2_l1"
         android:layout_width="401dp"
         android:layout_height="39dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="77dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="Movie Time"
         android:textColor="#c0c0c0"
         android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/movie2_l2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.116" />
+        />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/movie2_l7"
         android:layout_width="47dp"
         android:layout_height="26dp"
-        android:layout_marginStart="177dp"
-        android:layout_marginEnd="177dp"
         android:text="-OR-"
         android:textColor="#aa1d1d"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.788" />
+        app:layout_constraintBottom_toTopOf="@id/movie2_l8"
+        app:layout_constraintEnd_toEndOf="@id/movie2_l6"
+        app:layout_constraintStart_toStartOf="@id/movie2_l6"
+
+        app:layout_constraintTop_toBottomOf="@id/movie2_l6" />
 
     <TextView
-        android:id="@+id/textView_signIn"
+        android:id="@+id/Sign_In"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
         android:text="Sign In"
         android:textColor="@color/cardview_light_background"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.658"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845" />
+        app:layout_constraintEnd_toEndOf="@id/movie2_l7"
+        app:layout_constraintStart_toEndOf="@id/movie2_l8"
+        app:layout_constraintTop_toBottomOf="@id/movie2_l7"
+        android:layout_marginEnd="30dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
