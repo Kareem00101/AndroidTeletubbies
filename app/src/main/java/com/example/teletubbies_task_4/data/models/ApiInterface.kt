@@ -12,7 +12,7 @@ interface ApiInterface {
         fun getMovie(
 
             @Query("api_key")apiKey: String,
-            @Query("language") language: String= "en_US",     //These 2 are optional.
+            @Query("language") language: String = "en_US",     //These 2 are optional.
             //@Query("page") page: Int
 
         ): Call<MovieResponse>
