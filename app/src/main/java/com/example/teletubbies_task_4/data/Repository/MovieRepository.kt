@@ -1,7 +1,9 @@
 package com.example.teletubbies_task_4.data.Repository
+import android.content.Context
 import com.example.teletubbies_task_4.data.MovieMapper
 import com.example.teletubbies_task_4.data.models.ApiInterface
 import com.example.teletubbies_task_4.data.Network.ApiClient
+import com.example.teletubbies_task_4.data.database.AppDatabase
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 import com.example.teletubbies_task_4.data.ui.Movie
 import retrofit2.Call
@@ -19,6 +21,8 @@ object MovieRepository {
     private const val apiKey = "4b7ad36f69f80aa34703d042a53836e4"
     //mapper for linking the data.
     private val mapper by lazy { MovieMapper() }
+
+    private lateinit var appDatabase: AppDatabase
 
     //This method is to be called in the MVVM.
     fun requestMovieData(lang: String, callback: MovieCallBack)
@@ -39,6 +43,9 @@ object MovieRepository {
                         println("Response Successful")
                         //passing the response data to the var
                         val moviesData = mapper.mapToMovieUi(response.body()!!)
+
+                        appDatabase.getMovieDao().addMovies(moviesData)
+
                         //passing the data to the implementer of the interface (MVVM).
                         callback.onMovieReady(moviesData)
                     } else if(response.code() in 400..404) {
@@ -54,11 +61,16 @@ object MovieRepository {
                     val msg = "Error while getting movies data"
                     //passing the data to the implementer of the interface (MVVM).
                     callback.onMovieError(errorMsg = msg)
+
+                    callback.onMovieReady(appDatabase.getMovieDao().getAllMovies())
                 } // end of on failure
 
             })
     }
 
+    fun createDatabase(context: Context) {
+        appDatabase = AppDatabase.getDatabase(context)
+    }
 
     //interface class, necessary in order to create an object from the main activity.
     //Main activity must implement the interface.
