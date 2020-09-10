@@ -3,7 +3,6 @@ package com.example.teletubbies_task_4.UI
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
 import com.example.teletubbies_task_4.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,12 +14,12 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
 
         //switches you to the sign up layout
-        textView_signUp.setOnClickListener {
+        movie_l8.setOnClickListener {
         val intent = Intent(this@MainActivity, MainActivity2::class.java)
             startActivity(intent)
         }
         //opens the activity that shows you the APP
-       button_Preview.setOnClickListener {
+       movie_l9.setOnClickListener {
             val intent = Intent(this@MainActivity, RecyclerViewMovies::class.java)
             startActivity(intent)
         }
