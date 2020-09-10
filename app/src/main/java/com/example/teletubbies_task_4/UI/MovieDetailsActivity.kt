@@ -6,8 +6,7 @@ import android.text.Html
 import com.example.teletubbies_task_4.R
 import kotlinx.android.synthetic.main.movie_details.*
 
-//TODO: always getting same movie data, on every movie.
-//TODO: fix this error.
+
 class MovieDetailsActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

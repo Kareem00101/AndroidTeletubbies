@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.teletubbies_task_4.data.ui.Movie
 
-//TODO: Implement this class.
+
 @Database(entities = [Movie::class], version = 1, exportSchema = false)
 abstract class AppDatabase: RoomDatabase()
 {
