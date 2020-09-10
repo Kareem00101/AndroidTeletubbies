@@ -18,11 +18,11 @@
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108" />
+         />
 
     <RatingBar
         android:id="@+id/itemRatingBar"
@@ -35,31 +35,25 @@
         android:numStars="6"
         android:rating="4.5"
         android:theme="@style/RatingBar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232" />
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@id/movieOverviewTitle"
+        app:layout_constraintStart_toStartOf="@id/movieOverviewTitle"
+        app:layout_constraintTop_toBottomOf="@id/movieOverviewTitle"
+        />
 
     <TextView
         android:id="@+id/movieOverviewText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="2dp"
+        android:layout_margin="15dp"
         android:paddingStart="6dp"
         android:paddingTop="2dp"
         android:paddingEnd="6dp"
         android:paddingBottom="2dp"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393"
+        app:layout_constraintTop_toBottomOf="@id/itemRatingBar"
         tools:text="TextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
