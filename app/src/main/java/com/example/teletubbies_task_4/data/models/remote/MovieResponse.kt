@@ -1,4 +1,4 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.data.models.remote
 
 import com.google.gson.annotations.SerializedName
 
@@ -24,8 +24,11 @@ data class MovieDetails(
     @SerializedName("release_date")        //Movie Release Date
     val release: String,
 
-//Data for the bonus
+    //ID for database
+    @SerializedName("id")
+    val id: Long,
 
+    //Data for the bonus
     @SerializedName("backdrop_path")
     val pictureLandscape: String,
     @SerializedName("overview")
@@ -34,7 +37,6 @@ data class MovieDetails(
     val votes: Int,
     @SerializedName("adult")
     val adult: Boolean
-
 )
 
 

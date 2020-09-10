@@ -1,18 +1,19 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.UI
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.teletubbies_task_4.R
+import com.example.teletubbies_task_4.data.models.remote.MovieDetails
+import com.example.teletubbies_task_4.data.ui.Movie
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.movie_details.view.*
 
 
 //An adapter class is very necessary for the functioning of the recycler view, as it links the data
 //from the data source to the item view holder holder.
-class MovieAdapter(private val movieList: List<MovieDetails>) : RecyclerView.Adapter<NoteViewHolder>()
+class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<NoteViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -35,28 +36,20 @@ class MovieAdapter(private val movieList: List<MovieDetails>) : RecyclerView.Ada
         Picasso.get().load("https://image.tmdb.org/t/p/w500/${movieLinker.posterPortrait}").into(holder.moviePoster)
 
 
-        //For second screen
+        //For second screen ( movie description screen )
+        val bundle: Bundle = Bundle()
+        bundle.putString("movie_description", movieLinker.description)
+        bundle.putString("title", movieLinker.title)
+        //Setting the click listener on the whole item, since we got no buttons.
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MovieDetailsActivity::class.java)
-            //intent.putExtra(movieList)[position]
+            intent.putExtras(bundle)
             holder.itemView.context.startActivity(intent)
-            //val holder2: MovieDescriptionHolder
-            //holder2.movieOverview.text = iDunKnow.description
-            //holder2 = MovieDescriptionHolder()
-            //bindSecondScreenData(holder2, iDunKnow)
+
         }
     }
-
     //this functions returns the list size.
     override fun getItemCount(): Int {
        return movieList.size
-    }
-     class MovieDescriptionHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
-        //variables referencing to the item_note layout views.
-        val movieOverview: TextView = itemView.movieOverviewText
-    }
-    private fun bindSecondScreenData(holder2: MovieDescriptionHolder, x: MovieDetails)
-    {
-        holder2.movieOverview.text = x.description
     }
 }

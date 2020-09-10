@@ -1,4 +1,4 @@
-package com.example.teletubbies_task_4
+package com.example.teletubbies_task_4.UI
 
 import android.content.Intent
 import android.view.View
@@ -17,14 +17,4 @@ class NoteViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
     val movieLanguage : TextView = itemView.languageOfMovie
     val movieRelease : TextView = itemView.releaseDate
 
-
 }
-/*init {
-    itemView.setOnClickListener {
-        Toast.makeText(
-            itemView.context,
-            "Hello hope it works.",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-}*/
