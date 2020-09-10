@@ -1,149 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".UI.MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_dark"
-    tools:context=".UI.MainActivity">
-
-    <Button
-        android:id="@+id/Preview_App"
-        android:layout_width="140dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="70dp"
-        android:background="#aa1d1d"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="textEmailAddress"
-        android:text="Preview App"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/Sign_Up"
-        app:layout_constraintEnd_toEndOf="@id/Sign_Up"
-        app:layout_constraintStart_toStartOf="@id/Sign_Up"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/movie_l1"
-        android:layout_width="401dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="60dp"
-        android:gravity="center"
-        android:text="Movie Time"
-        android:textColor="#c0c0c0"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/movie_l2"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <ImageView
-        android:id="@+id/movie_l2"
-        android:layout_width="348dp"
-        android:layout_height="111dp"
-        app:layout_constraintBottom_toTopOf="@id/movie_l3"
-        app:layout_constraintEnd_toEndOf="@id/movie_l1"
-        app:layout_constraintStart_toStartOf="@id/movie_l1"
-        app:layout_constraintTop_toBottomOf="@id/movie_l1"
-        app:srcCompat="@drawable/popcorn_33" />
-
-    <Button
-        android:id="@+id/movie_l5"
-        android:layout_width="289dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="40dp"
-        android:background="#aa1d1d"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="textEmailAddress"
-        android:text="  SIGN IN"
-        android:textColor="@color/cardview_light_background"
-        app:layout_constraintTop_toBottomOf="@id/movie_l4"
-        app:layout_constraintBottom_toTopOf="@id/movie_l6"
-        app:layout_constraintEnd_toEndOf="@id/movie_l4"
-        app:layout_constraintStart_toStartOf="@id/movie_l4"
-        tools:ignore="TextViewEdits" />
-
-    <EditText
-        android:id="@+id/movie_l3"
-        android:layout_width="337dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/background"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="  Username or phone number"
-        android:textColorHint="#b3b3b3"
-        android:textColor="#b3b3b3"
-        app:layout_constraintBottom_toTopOf="@id/movie_l4"
-        app:layout_constraintTop_toBottomOf="@id/movie_l2"
-        app:layout_constraintEnd_toEndOf="@id/movie_l2"
-        app:layout_constraintStart_toStartOf="@id/movie_l2"
-        />
-
-    <EditText
-        android:id="@+id/movie_l4"
-        android:layout_width="337dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="55dp"
-        android:background="@drawable/background"
-        android:inputType="textPassword"
-        android:hint="   Password                                        SHOW"
-        android:textColorHint="#b3b3b3"
-        android:textColor="#b3b3b3"
-        app:layout_constraintTop_toBottomOf="@id/movie_l3"
-        app:layout_constraintBottom_toTopOf="@id/movie_l5"
-        app:layout_constraintEnd_toEndOf="@id/movie_l3"
-        app:layout_constraintStart_toStartOf="@id/movie_l3"
-        />
-
-    <TextView
-        android:id="@+id/Sign_Up"
-        android:layout_width="wrap_content"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:gravity="center"
-        android:text="SIGN UP"
-        android:textColor="#c0c0c0"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/Preview_App"
-        app:layout_constraintEnd_toEndOf="@id/movie_l7"
-        app:layout_constraintStart_toStartOf="@id/movie_l7"
-        app:layout_constraintTop_toBottomOf="@id/movie_l7" />
+        >
 
-    <TextView
-        android:id="@+id/movie_l6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recover Password"
-        android:textColor="#c0c0c0"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/movie_l5"
-        app:layout_constraintBottom_toTopOf="@id/movie_l7"
-        app:layout_constraintEnd_toEndOf="@+id/movie_l5"
-        app:layout_constraintStart_toStartOf="@+id/movie_l5"
-        />
+        <Button
+            android:id="@+id/Preview_App"
+            android:layout_width="140dp"
+            android:layout_height="37dp"
+            android:background="#aa1d1d"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textEmailAddress"
+            android:text="Preview App"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="14sp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintTop_toBottomOf="@id/Sign_Up"
+            app:layout_constraintEnd_toEndOf="@id/Sign_Up"
+            app:layout_constraintStart_toStartOf="@id/Sign_Up"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
-    <TextView
-        android:id="@+id/movie_l7"
-        android:layout_width="28dp"
-        android:layout_height="21dp"
-        android:layout_marginBottom="20dp"
-        android:text="-OR-"
-        android:textColor="#c0c0c0"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/Sign_Up"
-        app:layout_constraintEnd_toEndOf="@id/movie_l6"
-        app:layout_constraintStart_toStartOf="@id/movie_l6"
-        app:layout_constraintTop_toBottomOf="@id/movie_l6"
-        />
+        <TextView
+            android:id="@+id/movie_l1"
+            android:layout_width="401dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:text="Movie Time"
+            android:textColor="#c0c0c0"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/movie_l2"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/movie_l2"
+            android:layout_width="348dp"
+            android:layout_height="111dp"
+            app:layout_constraintBottom_toTopOf="@id/movie_l3"
+            app:layout_constraintEnd_toEndOf="@id/movie_l1"
+            app:layout_constraintStart_toStartOf="@id/movie_l1"
+            app:layout_constraintTop_toBottomOf="@id/movie_l1"
+            app:srcCompat="@drawable/popcorn_33" />
+
+        <Button
+            android:id="@+id/movie_l5"
+            android:layout_width="289dp"
+            android:layout_height="47dp"
+            android:layout_marginBottom="40dp"
+            android:background="#aa1d1d"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textEmailAddress"
+            android:text="  SIGN IN"
+            android:textColor="@color/cardview_light_background"
+            app:layout_constraintTop_toBottomOf="@id/movie_l4"
+            app:layout_constraintBottom_toTopOf="@id/movie_l6"
+            app:layout_constraintEnd_toEndOf="@id/movie_l4"
+            app:layout_constraintStart_toStartOf="@id/movie_l4"
+            tools:ignore="TextViewEdits" />
+
+        <EditText
+            android:id="@+id/movie_l3"
+            android:layout_width="337dp"
+            android:layout_height="53dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/background"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="  Username or phone number"
+            android:textColorHint="#b3b3b3"
+            android:textColor="#b3b3b3"
+            app:layout_constraintBottom_toTopOf="@id/movie_l4"
+            app:layout_constraintTop_toBottomOf="@id/movie_l2"
+            app:layout_constraintEnd_toEndOf="@id/movie_l2"
+            app:layout_constraintStart_toStartOf="@id/movie_l2"
+            />
+
+        <EditText
+            android:id="@+id/movie_l4"
+            android:layout_width="337dp"
+            android:layout_height="53dp"
+            android:layout_marginBottom="55dp"
+            android:background="@drawable/background"
+            android:inputType="textPassword"
+            android:hint="   Password                                        SHOW"
+            android:textColorHint="#b3b3b3"
+            android:textColor="#b3b3b3"
+            app:layout_constraintTop_toBottomOf="@id/movie_l3"
+            app:layout_constraintBottom_toTopOf="@id/movie_l5"
+            app:layout_constraintEnd_toEndOf="@id/movie_l3"
+            app:layout_constraintStart_toStartOf="@id/movie_l3"
+            />
+
+        <TextView
+            android:id="@+id/Sign_Up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:text="SIGN UP"
+            android:textColor="#c0c0c0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/Preview_App"
+            app:layout_constraintEnd_toEndOf="@id/movie_l7"
+            app:layout_constraintStart_toStartOf="@id/movie_l7"
+            app:layout_constraintTop_toBottomOf="@id/movie_l7" />
+
+        <TextView
+            android:id="@+id/movie_l6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recover Password"
+            android:textColor="#c0c0c0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/movie_l5"
+            app:layout_constraintBottom_toTopOf="@id/movie_l7"
+            app:layout_constraintEnd_toEndOf="@+id/movie_l5"
+            app:layout_constraintStart_toStartOf="@+id/movie_l5"
+            />
+
+        <TextView
+            android:id="@+id/movie_l7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="2dp"
+            android:text="-OR-"
+            android:textColor="#c0c0c0"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/Sign_Up"
+            app:layout_constraintEnd_toEndOf="@id/movie_l6"
+            app:layout_constraintStart_toStartOf="@id/movie_l6"
+            app:layout_constraintTop_toBottomOf="@id/movie_l6"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

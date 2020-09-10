@@ -15,19 +15,16 @@
         android:id="@+id/ratingOfMovie"
         android:layout_width="33dp"
         android:layout_height="19dp"
-
         android:gravity="center"
         android:hint="@string/film_review"
         android:textColor="@android:color/background_light"
         android:textColorHint="@android:color/background_light"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.901"
-        app:layout_constraintStart_toStartOf="@+id/posterPortrait"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395"
+        android:layout_marginStart="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/itemRatingBar"
+        app:layout_constraintStart_toEndOf="@id/itemRatingBar"
+        app:layout_constraintTop_toTopOf="@id/itemRatingBar"
         tools:text="rate" />
 
     <TextView
@@ -40,12 +37,9 @@
         android:textColorLink="@android:color/background_light"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@id/titleOfMovie"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.598"
+        app:layout_constraintTop_toBottomOf="@id/itemRatingBar"
         tools:text="language" />
 
     <TextView
@@ -59,12 +53,9 @@
         android:textColorHint="@android:color/background_light"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/titleOfMovie"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.793"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/languageOfMovie"
+        app:layout_constraintStart_toStartOf="@id/languageOfMovie"
         tools:text="release" />
 
     <TextView
@@ -76,12 +67,11 @@
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="25dp"
+        app:layout_constraintBottom_toTopOf="@id/itemRatingBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.365"
         app:layout_constraintStart_toEndOf="@id/posterPortrait"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193"
         tools:text="title" />
 
     <ImageView
@@ -99,11 +89,8 @@
         android:paddingBottom="10dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:src="@drawable/harrypotter" />
 
     <RatingBar
@@ -111,18 +98,16 @@
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:clickable="true"
         android:focusable="true"
         android:foregroundGravity="center"
         android:numStars="7"
         android:rating="6"
         android:theme="@style/RatingBar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/languageOfMovie"
         app:layout_constraintStart_toStartOf="@id/titleOfMovie"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.409" />
+        app:layout_constraintTop_toBottomOf="@id/titleOfMovie" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
