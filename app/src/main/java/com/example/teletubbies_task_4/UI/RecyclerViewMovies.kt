@@ -13,11 +13,13 @@ import kotlinx.android.synthetic.main.activity_recyclerview_movies.*
 
 //This is the activity that contains the recycler view.
 class RecyclerViewMovies : AppCompatActivity() {
+
     private val mainViewModel: MainViewModel by viewModels()
+    var page = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
-        var page = 1
+
         //MVVM PART START HERE
         mainViewModel.movieLiveData
             .observe(this, {
@@ -30,14 +32,19 @@ class RecyclerViewMovies : AppCompatActivity() {
         })
 
         mainViewModel.loadMovieData(myPage = page)
+        //MVVM ends here
 
+        //For pagination
+        main_recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(0)) {
+                    page++
+                    mainViewModel.loadMovieData(myPage = page)
 
-        if(isRecyclerScrollable(main_recycler) == false) {
-            page++
-            mainViewModel.loadMovieData(myPage = page)
-            //MVVM PART ENDS HERE
-        }
-
+                }
+            }
+        })
 
     }
 
