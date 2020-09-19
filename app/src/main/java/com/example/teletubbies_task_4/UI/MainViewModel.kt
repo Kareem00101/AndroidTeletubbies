@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.teletubbies_task_4.data.Repository.MovieRepository
+import com.example.teletubbies_task_4.data.Repository.MovieRepository.pg
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 import com.example.teletubbies_task_4.data.ui.Movie
 
@@ -46,7 +47,10 @@ class MainViewModel(application: Application)  : AndroidViewModel(application),
             currentMovieLang = movieLang
 
         //Calling requestMovieData function inside the repository file.
-        MovieRepository.requestMovieData(currentMovieLang, this)
+        if(pg > 2){
+            MovieRepository.requestMovieData(currentMovieLang, this)
+            pg++
+        }
     }
 
     //The implementation of the interface class inside the repository file.

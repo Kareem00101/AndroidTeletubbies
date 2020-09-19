@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teletubbies_task_4.R
+import com.example.teletubbies_task_4.data.Repository.MovieRepository.pg
 import com.example.teletubbies_task_4.data.models.remote.MovieDetails
 import com.example.teletubbies_task_4.data.ui.Movie
 import com.squareup.picasso.Picasso

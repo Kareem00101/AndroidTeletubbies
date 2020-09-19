@@ -24,12 +24,14 @@ object MovieRepository {
 
     private lateinit var appDatabase: AppDatabase
 
+    var pg :Int = 1;
+
     //This method is to be called in the MVVM.
     fun requestMovieData(lang: String, callback: MovieCallBack)
     {
 
         //calling the interface get method and passing it the needed info.
-        apiServices.getMovie(apiKey = apiKey, language = lang)
+        apiServices.getMovie(apiKey = apiKey, language = lang,pg)
             .enqueue(object: Callback<MovieResponse> {
 
                 override fun onResponse(
