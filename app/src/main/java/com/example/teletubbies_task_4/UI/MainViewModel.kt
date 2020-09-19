@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.teletubbies_task_4.data.Repository.MovieRepository
-import com.example.teletubbies_task_4.data.Repository.MovieRepository.pg
+//import com.example.teletubbies_task_4.data.Repository.MovieRepository.pg
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 import com.example.teletubbies_task_4.data.ui.Movie
 
@@ -36,7 +36,7 @@ class MainViewModel(application: Application)  : AndroidViewModel(application),
 
 
     //The function below is to be used inside the activity.
-    fun loadMovieData(movieLang: String = "") {
+    fun loadMovieData(movieLang: String = "", myPage: Int) {
         //The Logic below is for future purposes if we add a language choosing functionality.
         if (movieLang == currentMovieLang && this::movieData.isInitialized) {
             _movieLiveData.value = movieData
@@ -48,7 +48,7 @@ class MainViewModel(application: Application)  : AndroidViewModel(application),
 
         //Calling requestMovieData function inside the repository file.
 
-            MovieRepository.requestMovieData(currentMovieLang, this)
+            MovieRepository.requestMovieData(currentMovieLang, this, myPage)
     }
 
     //The implementation of the interface class inside the repository file.
