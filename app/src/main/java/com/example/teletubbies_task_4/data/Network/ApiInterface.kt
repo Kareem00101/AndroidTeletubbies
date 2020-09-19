@@ -13,7 +13,7 @@ interface ApiInterface {
 
             @Query("api_key")apiKey: String,
             @Query("language") language: String = "en_US",     //This is optional.
-            //@Query("page") page: Int                               //This is optional.
+            @Query("page") page: Int                               //This is optional.
 
         ): Call<MovieResponse>
 
