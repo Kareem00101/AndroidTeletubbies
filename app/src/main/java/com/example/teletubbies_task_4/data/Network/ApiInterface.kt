@@ -1,4 +1,4 @@
-package com.example.teletubbies_task_4.data.models
+package com.example.teletubbies_task_4.data.Network
 
 import com.example.teletubbies_task_4.data.models.remote.ImageDetails
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
