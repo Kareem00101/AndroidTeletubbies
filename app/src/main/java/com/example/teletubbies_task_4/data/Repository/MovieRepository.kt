@@ -17,7 +17,7 @@ object MovieRepository {
     private val apiServices: ApiInterface by lazy {
         ApiClient.getClient().create(ApiInterface::class.java)
     }
-    //variables we need to call the get from the APIinterface.
+    //variables we need to call the get from the API interface.
     private const val apiKey = "4b7ad36f69f80aa34703d042a53836e4"
     //mapper for linking the data.
     private val mapper by lazy { MovieMapper() }
