@@ -1,11 +1,13 @@
 package com.example.teletubbies_task_4.data.Repository
 import android.content.Context
+import androidx.recyclerview.widget.RecyclerView
 import com.example.teletubbies_task_4.data.MovieMapper
-import com.example.teletubbies_task_4.data.Network.ApiInterface
 import com.example.teletubbies_task_4.data.Network.ApiClient
+import com.example.teletubbies_task_4.data.Network.ApiInterface
 import com.example.teletubbies_task_4.data.database.AppDatabase
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 import com.example.teletubbies_task_4.data.ui.Movie
+import kotlinx.android.synthetic.main.activity_recyclerview_movies.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,15 +26,15 @@ object MovieRepository {
 
     private lateinit var appDatabase: AppDatabase
 
-    var pg :Int = 1;
+
 
     //This method is to be called in the MVVM.
-    fun requestMovieData(lang: String, callback: MovieCallBack)
+    fun requestMovieData(lang: String, callback: MovieCallBack, myPage:Int)
     {
-        while(pg <= 10){
+
         //calling the interface get method and passing it the needed info.
-        apiServices.getMovie(apiKey = apiKey, language = lang,pg)
-            .enqueue(object: Callback<MovieResponse> {
+        apiServices.getMovie(apiKey = apiKey, language = lang, myPage)
+            .enqueue(object : Callback<MovieResponse> {
 
                 override fun onResponse(
                     call: Call<MovieResponse>,
@@ -40,8 +42,7 @@ object MovieRepository {
                 ) { //start of onResponse
                     println("Calling onResponse") // a check
 
-                    if(response.isSuccessful)
-                    {
+                    if (response.isSuccessful) {
                         println("Response Successful")
                         //passing the response data to the var
                         val moviesData = mapper.mapToMovieUi(response.body()!!)
@@ -50,7 +51,7 @@ object MovieRepository {
 
                         //passing the data to the implementer of the interface (MVVM).
                         callback.onMovieReady(moviesData)
-                    } else if(response.code() in 400..404) {
+                    } else if (response.code() in 400..404) {
                         //in case of an error, helps identifying the error.
                         val msg = "an error has occurred"
                         callback.onMovieError(errorMsg = msg)
@@ -68,8 +69,7 @@ object MovieRepository {
                 } // end of on failure
 
             })
-            pg++
-        }
+
     }
 
     fun createDatabase(context: Context) {
@@ -82,6 +82,10 @@ object MovieRepository {
     {
         fun onMovieReady(movie: List<Movie>)
         fun onMovieError(errorMsg: String)
+    }
+
+    fun isRecyclerScrollable(recyclerView: RecyclerView): Boolean {
+        return recyclerView.computeHorizontalScrollRange() > recyclerView.width || recyclerView.computeVerticalScrollRange() > recyclerView.height
     }
 
 }//end of movieRepository
