@@ -1,7 +1,7 @@
 package com.example.teletubbies_task_4.data.Repository
 import android.content.Context
 import com.example.teletubbies_task_4.data.MovieMapper
-import com.example.teletubbies_task_4.data.models.ApiInterface
+import com.example.teletubbies_task_4.data.Network.ApiInterface
 import com.example.teletubbies_task_4.data.Network.ApiClient
 import com.example.teletubbies_task_4.data.database.AppDatabase
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
