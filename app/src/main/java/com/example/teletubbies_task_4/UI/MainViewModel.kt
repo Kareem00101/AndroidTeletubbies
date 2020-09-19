@@ -47,10 +47,8 @@ class MainViewModel(application: Application)  : AndroidViewModel(application),
             currentMovieLang = movieLang
 
         //Calling requestMovieData function inside the repository file.
-        if(pg > 2){
+
             MovieRepository.requestMovieData(currentMovieLang, this)
-            pg++
-        }
     }
 
     //The implementation of the interface class inside the repository file.
