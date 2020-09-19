@@ -1,9 +1,13 @@
 package com.example.teletubbies_task_4.UI
 
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teletubbies_task_4.R
@@ -13,11 +17,16 @@ import kotlinx.android.synthetic.main.activity_recyclerview_movies.*
 
 //This is the activity that contains the recycler view.
 class RecyclerViewMovies : AppCompatActivity() {
+    private var nestedScrollView:NestedScrollView = findViewById(R.id.scroll_view)
+    private var recyclerView:RecyclerView = findViewById(R.id.main_recycler)
+    private var progressBar:ProgressBar = findViewById(R.id.progress_bar)
+
     private val mainViewModel: MainViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
-        var page = 1
+        var page:Int = 1
+
         //MVVM PART START HERE
         mainViewModel.movieLiveData
             .observe(this, {
@@ -31,15 +40,28 @@ class RecyclerViewMovies : AppCompatActivity() {
 
         mainViewModel.loadMovieData(myPage = page)
 
+        nestedScrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
 
-        if(isRecyclerScrollable(main_recycler) == false) {
-            page++
-            mainViewModel.loadMovieData(myPage = page)
-            //MVVM PART ENDS HERE
+            if (scrollY == v.measuredHeight - v.measuredHeight) {
+                page++
+
+                progressBar.visibility = View.VISIBLE
+
+                mainViewModel.loadMovieData(myPage = page)
+            }
+
+        }
         }
 
 
-    }
+        /*if(isRecyclerScrollable(main_recycler) == false) {
+            page++
+            mainViewModel.loadMovieData(myPage = page)
+            //MVVM PART ENDS HERE
+        }*/
+
+
+
 
     //This functions links data source with the adapter.
     private fun bindMoviesDataWithAdapter(movie: List<Movie>)
