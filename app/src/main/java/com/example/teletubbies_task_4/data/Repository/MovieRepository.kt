@@ -29,7 +29,7 @@ object MovieRepository {
     //This method is to be called in the MVVM.
     fun requestMovieData(lang: String, callback: MovieCallBack)
     {
-
+        while(pg <= 2){
         //calling the interface get method and passing it the needed info.
         apiServices.getMovie(apiKey = apiKey, language = lang,pg)
             .enqueue(object: Callback<MovieResponse> {
@@ -68,6 +68,8 @@ object MovieRepository {
                 } // end of on failure
 
             })
+            pg++
+        }
     }
 
     fun createDatabase(context: Context) {
