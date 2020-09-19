@@ -38,7 +38,7 @@ class RecyclerViewMovies : AppCompatActivity() {
         main_recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                if (!recyclerView.canScrollVertically(0)) {
+                if (!recyclerView.canScrollVertically(1)) {
                     page++
                     mainViewModel.loadMovieData(myPage = page)
 
