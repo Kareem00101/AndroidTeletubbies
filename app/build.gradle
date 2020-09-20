@@ -50,6 +50,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    //For Pagination
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha05'
 
     // for MVVM
     implementation "androidx.activity:activity-ktx:1.1.0"

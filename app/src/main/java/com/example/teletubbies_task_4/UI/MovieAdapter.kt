@@ -1,13 +1,13 @@
 package com.example.teletubbies_task_4.UI
 
+//import com.example.teletubbies_task_4.data.Repository.MovieRepository.pg
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teletubbies_task_4.R
-//import com.example.teletubbies_task_4.data.Repository.MovieRepository.pg
-import com.example.teletubbies_task_4.data.models.remote.MovieDetails
 import com.example.teletubbies_task_4.data.ui.Movie
 import com.squareup.picasso.Picasso
 
@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso
 //from the data source to the item view holder holder.
 class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<NoteViewHolder>()
 {
+    private val items: ArrayList<Movie>? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val movieView = layoutInflater.inflate(R.layout.item_note, parent, false)
@@ -34,7 +35,9 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<No
         //Binding images using Picasso.
         //In order to generate a fully working image URL, you'll need 3 pieces of data.
         //Those pieces are a base_url, a file_size and a file_path.
-        Picasso.get().load("https://image.tmdb.org/t/p/w500/${movieLinker.posterPortrait}").into(holder.moviePoster)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/${movieLinker.posterPortrait}").into(
+            holder.moviePoster
+        )
 
 
         //For second screen ( movie description screen )
@@ -52,5 +55,11 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<No
     //this functions returns the list size.
     override fun getItemCount(): Int {
        return movieList.size
+    }
+    //For pagination
+    open fun updateData(movieList: List<Movie>) {
+        items!!.clear();
+        items!!.addAll(movieList);
+        notifyDataSetChanged()
     }
 }
