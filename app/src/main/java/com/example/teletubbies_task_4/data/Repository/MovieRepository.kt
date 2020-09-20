@@ -84,6 +84,7 @@ object MovieRepository {
         fun onMovieError(errorMsg: String)
     }
 
+    //Trial function not working!
     fun isRecyclerScrollable(recyclerView: RecyclerView): Boolean {
         return recyclerView.computeHorizontalScrollRange() > recyclerView.width || recyclerView.computeVerticalScrollRange() > recyclerView.height
     }

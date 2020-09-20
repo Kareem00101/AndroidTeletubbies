@@ -16,11 +16,12 @@ class RecyclerViewMovies : AppCompatActivity(){
 
     //Pagination bug fix test variables.
     //private val items: ArrayList<Movie>? = null
-    //private lateinit var RvAdapter: MovieAdapter
+    private lateinit var RvAdapter: MovieAdapter
     private val mainViewModel: MainViewModel by viewModels()
     var page = 1
     //Pagination bug fix trial
-    //var isPagination = false
+    var isPagination = false
+    val linearLayoutManager = LinearLayoutManager(this@RecyclerViewMovies, LinearLayoutManager.VERTICAL, false)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
@@ -28,21 +29,24 @@ class RecyclerViewMovies : AppCompatActivity(){
 
         //MVVM PART START HERE
 
-        mainViewModel.movieLiveData
+        /*mainViewModel.movieLiveData
                 .observe(this, {
                     //button_Preview.isEnabled = true
                     bindMoviesDataWithAdapter(it)
-                })
+                })*/
         //Pagination bug fix test method.
-        /*mainViewModel.movieLiveData.observe(this, {
-            if (RvAdapter == null) {
-                setupRecycler(it)
-            } else {
-                val itemCount: Int = RvAdapter.getItemCount()
+        mainViewModel.movieLiveData.observe(this, {
+            if (isPagination) {
+                /*val itemCount: Int = RvAdapter.itemCount*/
+                linearLayoutManager.stackFromEnd
                 RvAdapter.updateData(it)
-                RvAdapter.notifyItemRangeInserted(itemCount, it.size)
+                /*RvAdapter.notifyItemRangeInserted(itemCount, it.size)*/
+
+            }else {
+                setupRecycler(it)
             }
-        })*/
+            //setupRecycler(it)
+        })
 
 
         mainViewModel.onError.observe(this, {
@@ -58,6 +62,7 @@ class RecyclerViewMovies : AppCompatActivity(){
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!recyclerView.canScrollVertically(1)) {
                     page++
+                    isPagination = true
                     mainViewModel.loadMovieData(myPage = page)
 
                 }
@@ -87,14 +92,17 @@ class RecyclerViewMovies : AppCompatActivity(){
 
     }
     //Pagination bug fix test method.
-    /*private fun setupRecycler(movie: List<Movie>) {
-        main_recycler.layoutManager = LinearLayoutManager(
+    private fun setupRecycler(movie: List<Movie>) {
+        /*main_recycler.layoutManager = LinearLayoutManager(
             this@RecyclerViewMovies,
             LinearLayoutManager.VERTICAL, false
-        )
+        )*/
+
+        //linearLayoutManager.stackFromEnd = true
+        main_recycler.layoutManager = linearLayoutManager
         RvAdapter = MovieAdapter(movie)
         main_recycler.adapter = RvAdapter
-    }*/
+    }
 
     //New one instead of the interface.
     private fun handleMovieError(errorMsg: String) {

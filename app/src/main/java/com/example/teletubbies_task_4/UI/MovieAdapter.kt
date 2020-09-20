@@ -69,7 +69,7 @@ class MovieAdapter(private var movieList: List<Movie>) : RecyclerView.Adapter<No
         //items!!.clear()
         //items!!.addAll(movieList)
         movieList = movieListNext
-        //notifyDataSetChanged()
+        notifyDataSetChanged()
     }
 
 
