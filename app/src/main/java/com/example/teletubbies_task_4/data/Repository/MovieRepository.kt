@@ -25,6 +25,8 @@ object MovieRepository {
     private lateinit var appDatabase: AppDatabase
 
     //This method is to be called in the MVVM.
+    //Popular API
+
     fun requestMovieData(lang: String, callback: MovieCallBack)
     {
 
@@ -55,6 +57,51 @@ object MovieRepository {
                     }
 
                 } //end of onResponse
+
+
+                override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    val msg = "Error while getting movies data"
+                    //passing the data to the implementer of the interface (MVVM).
+                    callback.onMovieError(errorMsg = msg)
+
+                    callback.onMovieReady(appDatabase.getMovieDao().getAllMovies())
+                } // end of on failure
+
+            })
+    }
+ //Top Rated API
+    fun requestTopRatedMovieData(lang: String, callback: MovieCallBack)
+    {
+
+        //calling the interface get method and passing it the needed info.
+        apiServices.getTopRated(apiKey = apiKey, language = lang)
+            .enqueue(object: Callback<MovieResponse> {
+
+                override fun onResponse(
+                    call: Call<MovieResponse>,
+                    response: Response<MovieResponse>
+                ) { //start of onResponse
+                    println("Calling onResponse") // a check
+
+                    if(response.isSuccessful)
+                    {
+                        println("Response Successful")
+                        //passing the response data to the var
+                        val moviesData = mapper.mapToMovieUi(response.body()!!)
+
+                        appDatabase.getMovieDao().addMovies(moviesData)
+
+                        //passing the data to the implementer of the interface (MVVM).
+                        callback.onMovieReady(moviesData)
+                    } else if(response.code() in 400..404) {
+                        //in case of an error, helps identifying the error.
+                        val msg = "an error has occurred"
+                        callback.onMovieError(errorMsg = msg)
+                    }
+
+                } //end of onResponse
+
 
                 override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                     t.printStackTrace()
