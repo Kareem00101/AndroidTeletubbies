@@ -8,6 +8,8 @@ import retrofit2.http.Query
 
 interface ApiInterface {
 
+    //For popular movies
+
         @GET("movie/popular")
         fun getMovie(
 
@@ -20,6 +22,15 @@ interface ApiInterface {
     //choose whether you want to use the configuration API or use the constant URL to get pictures
     //If you choose the constant method delete the @GET configuration below and the ImageDetails in MovieResponse file
 
+    //For Top rated movies
+
+    @GET("movie/top_rated")
+    fun getTopMovie(
+        @Query("api_key")apiKey: String,
+        @Query("language") language: String = "en_US",      //optional
+    ): Call<MovieResponse>
+
+    
     @GET("configuration")
     fun config (
 
