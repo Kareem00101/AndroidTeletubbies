@@ -16,6 +16,8 @@ import kotlinx.android.synthetic.main.item_note.*
 class RecyclerViewMovies : AppCompatActivity() {
     private val mainViewModel: MainViewModel by viewModels()
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
