@@ -58,17 +58,11 @@ class MovieAdapter(private var movieList: List<Movie>) : RecyclerView.Adapter<No
     override fun getItemCount(): Int {
        return movieList.size
     }
-    //A trial for solving the bug
-    /*//For pagination
-    public interface updateRecyclerDataCaller{
-        fun updateData(movieList: List<Movie>)
-    }*/
-    //Another trial for solving Pagination Bug.
-    //
+
     open fun updateData(movieListNext: List<Movie>) {
-        //items!!.clear()
-        //items!!.addAll(movieList)
+        //passing the updated list into the adapter's list.
         movieList = movieListNext
+        //notifying the adapter of the change.
         notifyDataSetChanged()
     }
 

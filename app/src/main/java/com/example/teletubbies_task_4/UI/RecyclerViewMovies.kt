@@ -14,38 +14,29 @@ import kotlinx.android.synthetic.main.activity_recyclerview_movies.*
 //This is the activity that contains the recycler view.
 class RecyclerViewMovies : AppCompatActivity(){
 
-    //Pagination bug fix test variables.
-    //private val items: ArrayList<Movie>? = null
+    //A var of adapter for functions accessibility
     private lateinit var RvAdapter: MovieAdapter
     private val mainViewModel: MainViewModel by viewModels()
+    //Page variable for pagination
     var page = 1
     //Pagination bug fix trial
     var isPagination = false
+
     val linearLayoutManager = LinearLayoutManager(this@RecyclerViewMovies, LinearLayoutManager.VERTICAL, false)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
 
-
         //MVVM PART START HERE
-
-        /*mainViewModel.movieLiveData
-                .observe(this, {
-                    //button_Preview.isEnabled = true
-                    bindMoviesDataWithAdapter(it)
-                })*/
-        //Pagination bug fix test method.
         mainViewModel.movieLiveData.observe(this, {
+            //checks if this is first load or a new page.
             if (isPagination) {
-                /*val itemCount: Int = RvAdapter.itemCount*/
                 linearLayoutManager.stackFromEnd
                 RvAdapter.updateData(it)
-                /*RvAdapter.notifyItemRangeInserted(itemCount, it.size)*/
-
+            //if this is first load it will set up the recycler.
             }else {
                 setupRecycler(it)
             }
-            //setupRecycler(it)
         })
 
 
@@ -61,8 +52,12 @@ class RecyclerViewMovies : AppCompatActivity(){
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!recyclerView.canScrollVertically(1)) {
+                    //this means we reached the scroll limit, therefore we increment the page,
+                    //in order to load the next page of the code.
                     page++
+                    //setting pagination to true so that movieLiveData updates instead of recreating.
                     isPagination = true
+                    //calling load function to load the data of the next page.
                     mainViewModel.loadMovieData(myPage = page)
 
                 }
@@ -71,34 +66,9 @@ class RecyclerViewMovies : AppCompatActivity(){
 
     }
 
-    //This functions links data source with the adapter.
-    private fun bindMoviesDataWithAdapter(movie: List<Movie>)
-    {
-        //Designing recycler view and linking it to the adapter.
-        main_recycler.layoutManager = LinearLayoutManager(
-            this@RecyclerViewMovies,
-            LinearLayoutManager.VERTICAL, false
-        )
-        main_recycler.adapter = MovieAdapter(movie)
-        //Pagination bug fix trial
-        /*val linearLayoutManager = LinearLayoutManager(this@RecyclerViewMovies, LinearLayoutManager.VERTICAL, false)
-        linearLayoutManager.stackFromEnd = true
-        main_recycler.layoutManager = linearLayoutManager
-        //main_recycler.adapter = MovieAdapter(movie)
-        var adapter = MovieAdapter(movie)
-        main_recycler.adapter = adapter
-        adapter.updateData(movie)
-        main_recycler.scrollToPosition(adapter.getItemCount() - 1)*/
-
-    }
     //Pagination bug fix test method.
     private fun setupRecycler(movie: List<Movie>) {
-        /*main_recycler.layoutManager = LinearLayoutManager(
-            this@RecyclerViewMovies,
-            LinearLayoutManager.VERTICAL, false
-        )*/
 
-        //linearLayoutManager.stackFromEnd = true
         main_recycler.layoutManager = linearLayoutManager
         RvAdapter = MovieAdapter(movie)
         main_recycler.adapter = RvAdapter
@@ -109,14 +79,5 @@ class RecyclerViewMovies : AppCompatActivity(){
 
         Toast.makeText(this@RecyclerViewMovies, errorMsg, Toast.LENGTH_LONG).show()
     }
-    fun isRecyclerScrollable(recyclerView: RecyclerView): Boolean {
-        return recyclerView.computeHorizontalScrollRange() > recyclerView.width || recyclerView.computeVerticalScrollRange() > recyclerView.height
-    }
-
-    //Pagination bug fix interface trial.
-    /*override fun updateData(movieList: List<Movie>) {
-        items!!.clear()
-        items!!.addAll(movieList)
-    }*/
 
 }
