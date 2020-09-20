@@ -14,9 +14,10 @@ import com.squareup.picasso.Picasso
 
 //An adapter class is very necessary for the functioning of the recycler view, as it links the data
 //from the data source to the item view holder holder.
-class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<NoteViewHolder>()
+class MovieAdapter(private var movieList: List<Movie>) : RecyclerView.Adapter<NoteViewHolder>()
 {
-    private val items: ArrayList<Movie>? = null
+    //A variable for pagination bug trial.
+    //private val items: ArrayList<Movie>? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val movieView = layoutInflater.inflate(R.layout.item_note, parent, false)
@@ -37,6 +38,7 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<No
         //Those pieces are a base_url, a file_size and a file_path.
         Picasso.get().load("https://image.tmdb.org/t/p/w500/${movieLinker.posterPortrait}").into(
             holder.moviePoster
+
         )
 
 
@@ -56,10 +58,20 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<No
     override fun getItemCount(): Int {
        return movieList.size
     }
-    //For pagination
-    open fun updateData(movieList: List<Movie>) {
-        items!!.clear();
-        items!!.addAll(movieList);
-        notifyDataSetChanged()
+    //A trial for solving the bug
+    /*//For pagination
+    public interface updateRecyclerDataCaller{
+        fun updateData(movieList: List<Movie>)
+    }*/
+    //Another trial for solving Pagination Bug.
+    //
+    open fun updateData(movieListNext: List<Movie>) {
+        //items!!.clear()
+        //items!!.addAll(movieList)
+        movieList = movieListNext
+        //notifyDataSetChanged()
     }
+
+
+
 }
