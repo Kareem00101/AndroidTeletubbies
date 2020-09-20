@@ -30,7 +30,7 @@ interface ApiInterface {
         @Query("language") language: String = "en_US",      //optional
     ): Call<MovieResponse>
 
-    
+
     @GET("configuration")
     fun config (
 

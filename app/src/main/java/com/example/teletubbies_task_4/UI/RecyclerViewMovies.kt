@@ -6,9 +6,7 @@ import androidx.activity.viewModels
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.teletubbies_task_4.Fragments.FavouriteFragment
-import com.example.teletubbies_task_4.Fragments.SettingsFragment
-import com.example.teletubbies_task_4.Fragments.Top_RatedFragment
+import com.example.teletubbies_task_4.Fragments.*
 import com.example.teletubbies_task_4.R
 import com.example.teletubbies_task_4.data.ui.Movie
 import kotlinx.android.synthetic.main.activity_recyclerview_movies.*
@@ -22,6 +20,8 @@ class RecyclerViewMovies : AppCompatActivity() {
     private val settingsFragment = SettingsFragment()
     private val favouriteFragment= FavouriteFragment()
     private val topRatedfragment= Top_RatedFragment()
+    private val popularFragment= popularrFragment()
+    private val homeFragment= HomeFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +40,15 @@ class RecyclerViewMovies : AppCompatActivity() {
         //MVVM PART ENDS HERE
 
 //fragments
-        replaceFragment(settingsFragment)
+//        replaceFragment(settingsFragment)
+        makeCurrentFragment(homeFragment)
         bottom_navigation.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.Settings -> replaceFragment(settingsFragment)
-                R.id.favourite -> replaceFragment(favouriteFragment)
-                R.id.TopRated -> replaceFragment(topRatedfragment)
+                R.id.Settings -> makeCurrentFragment(settingsFragment)
+                R.id.favourite -> makeCurrentFragment(favouriteFragment)
+                R.id.TopRated -> makeCurrentFragment(topRatedfragment)
+                R.id.home -> makeCurrentFragment(homeFragment)
+                R.id.popular -> makeCurrentFragment(popularFragment)
             }
             true
         }
@@ -68,11 +71,16 @@ class RecyclerViewMovies : AppCompatActivity() {
     }
 
     //FRAGMENT
-    private fun replaceFragment(fragment: Fragment){
-        if (fragment !=null) {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container,fragment)
-            transaction.commit()
+    private fun makeCurrentFragment(fragment: Fragment){
+//        if (fragment !=null) {
+//            val transaction = supportFragmentManager.beginTransaction()
+//            transaction.replace(R.id.fragment_container,fragment)
+//            transaction.commit()
+//        }
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fl_wrapper, fragment)
+            commit()
         }
     }
 }
