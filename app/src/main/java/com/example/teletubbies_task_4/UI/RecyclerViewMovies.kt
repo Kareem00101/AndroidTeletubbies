@@ -10,6 +10,7 @@ import com.example.teletubbies_task_4.Fragments.*
 import com.example.teletubbies_task_4.R
 import com.example.teletubbies_task_4.data.ui.Movie
 import kotlinx.android.synthetic.main.activity_recyclerview_movies.*
+import kotlinx.android.synthetic.main.fragment_popularr.*
 
 //This is the activity that contains the recycler view.
 class RecyclerViewMovies : AppCompatActivity() {
@@ -26,6 +27,12 @@ class RecyclerViewMovies : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
+
+        val settingsFragment = SettingsFragment()
+        val favouriteFragment= FavouriteFragment()
+        val topRatedfragment= Top_RatedFragment()
+        val popularFragment= popularrFragment()
+        val homeFragment= HomeFragment()
         //MVVM PART START HERE
         mainViewModel.movieLiveData
             .observe(this, {
@@ -42,7 +49,7 @@ class RecyclerViewMovies : AppCompatActivity() {
 //fragments
 //        replaceFragment(settingsFragment)
         makeCurrentFragment(homeFragment)
-        bottom_navigation.setOnNavigationItemSelectedListener {
+        bottom_navigation.setOnNavigationItemReselectedListener {
             when(it.itemId){
                 R.id.Settings -> makeCurrentFragment(settingsFragment)
                 R.id.favourite -> makeCurrentFragment(favouriteFragment)
@@ -53,6 +60,19 @@ class RecyclerViewMovies : AppCompatActivity() {
             true
         }
 
+    }
+    //FRAGMENT
+    private fun makeCurrentFragment(fragment: Fragment){
+//        if (fragment !=null) {
+//            val transaction = supportFragmentManager.beginTransaction()
+//            transaction.replace(R.id.fragment_container,fragment)
+//            transaction.commit()
+//        }
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fl_wrapper, fragment)
+            commit()
+        }
     }
 
     //This functions links data source with the adapter.
@@ -70,17 +90,5 @@ class RecyclerViewMovies : AppCompatActivity() {
         Toast.makeText(this@RecyclerViewMovies, errorMsg, Toast.LENGTH_LONG).show()
     }
 
-    //FRAGMENT
-    private fun makeCurrentFragment(fragment: Fragment){
-//        if (fragment !=null) {
-//            val transaction = supportFragmentManager.beginTransaction()
-//            transaction.replace(R.id.fragment_container,fragment)
-//            transaction.commit()
-//        }
 
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fl_wrapper, fragment)
-            commit()
-        }
-    }
 }
