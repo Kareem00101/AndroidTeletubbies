@@ -14,15 +14,6 @@ import kotlinx.android.synthetic.main.fragment_popularr.*
 
 //This is the activity that contains the recycler view.
 class RecyclerViewMovies : AppCompatActivity() {
-    private val mainViewModel: MainViewModel by viewModels()
-
-
-// fragment part for the menu bar
-    private val settingsFragment = SettingsFragment()
-    private val favouriteFragment= FavouriteFragment()
-    private val topRatedfragment= Top_RatedFragment()
-    private val popularFragment= popularrFragment()
-    private val homeFragment= HomeFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,18 +24,7 @@ class RecyclerViewMovies : AppCompatActivity() {
         val topRatedfragment= Top_RatedFragment()
         val popularFragment= popularrFragment()
         val homeFragment= HomeFragment()
-        //MVVM PART START HERE
-        mainViewModel.movieLiveData
-            .observe(this, {
-                //button_Preview.isEnabled = true
-                bindMoviesDataWithAdapter(it) })
 
-        mainViewModel.onError.observe(this, {
-            handleMovieError(it)
-        })
-
-        mainViewModel.loadMovieData()
-        //MVVM PART ENDS HERE
 
 //fragments
 //        replaceFragment(settingsFragment)
@@ -63,32 +43,8 @@ class RecyclerViewMovies : AppCompatActivity() {
     }
     //FRAGMENT
     private fun makeCurrentFragment(fragment: Fragment){
-//        if (fragment !=null) {
-//            val transaction = supportFragmentManager.beginTransaction()
-//            transaction.replace(R.id.fragment_container,fragment)
-//            transaction.commit()
-//        }
-
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fl_wrapper, fragment)
-            commit()
+            replace(R.id.fl_wrapper, fragment).commit()
         }
     }
-
-    //This functions links data source with the adapter.
-    private fun bindMoviesDataWithAdapter(movie: List<Movie>)
-    {
-        //Designing recycler view and linking it to the adapter.
-        main_recycler.layoutManager = LinearLayoutManager(this@RecyclerViewMovies,
-            LinearLayoutManager.VERTICAL, false )
-        main_recycler.adapter = MovieAdapter(movie)
-    }
-
-    //New one instead of the interface.
-    private fun handleMovieError(errorMsg: String) {
-
-        Toast.makeText(this@RecyclerViewMovies, errorMsg, Toast.LENGTH_LONG).show()
-    }
-
-
 }
