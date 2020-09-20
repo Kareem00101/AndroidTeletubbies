@@ -25,7 +25,7 @@ interface ApiInterface {
     //For Top rated movies
 
     @GET("movie/top_rated")
-    fun getTopMovie(
+    fun getTopRated(
         @Query("api_key")apiKey: String,
         @Query("language") language: String = "en_US",      //optional
     ): Call<MovieResponse>
