@@ -26,14 +26,11 @@ class RecyclerViewMovies : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
-        replaceFragment(settingsFragment)
-
         //MVVM PART START HERE
         mainViewModel.movieLiveData
             .observe(this, {
                 //button_Preview.isEnabled = true
-                bindMoviesDataWithAdapter(it)
-            })
+                bindMoviesDataWithAdapter(it) })
 
         mainViewModel.onError.observe(this, {
             handleMovieError(it)
@@ -42,8 +39,8 @@ class RecyclerViewMovies : AppCompatActivity() {
         mainViewModel.loadMovieData()
         //MVVM PART ENDS HERE
 
-
 //fragments
+        replaceFragment(settingsFragment)
         bottom_navigation.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.Settings -> replaceFragment(settingsFragment)
