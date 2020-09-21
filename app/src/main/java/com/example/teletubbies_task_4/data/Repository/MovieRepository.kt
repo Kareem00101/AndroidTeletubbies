@@ -12,7 +12,6 @@ import retrofit2.Response
 
 
 object MovieRepository {
-
     //for calling the API.
     private val apiServices: ApiInterface by lazy {
         ApiClient.getClient().create(ApiInterface::class.java)
@@ -70,6 +69,7 @@ object MovieRepository {
 
             })
     }
+
  //Top Rated API
     fun requestTopRatedMovieData(lang: String, callback: MovieCallBack)
     {

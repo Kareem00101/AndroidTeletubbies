@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 
-
 import com.example.teletubbies_task_4.R
 import com.example.teletubbies_task_4.UI.MainViewModel
 import com.example.teletubbies_task_4.UI.MovieAdapter
@@ -23,7 +22,7 @@ class Top_RatedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =inflater.inflate(R.layout.fragment_top__rated, container, false)
+        val view =inflater.inflate(R.layout.fragment_popularr, container, false)
         // Inflate the layout for this fragment
         return view
     }
