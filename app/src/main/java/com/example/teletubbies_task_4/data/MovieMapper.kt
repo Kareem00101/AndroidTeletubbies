@@ -7,7 +7,7 @@ import java.util.*
 
 class MovieMapper {
 
-        private lateinit var joinedList : LinkedList<Movie>
+    var joinedList = LinkedList<Movie>()
         fun mapToMovieUi(movieResponse: MovieResponse): List<Movie> {
         val Movies = mutableListOf<Movie>()
             var title = ""

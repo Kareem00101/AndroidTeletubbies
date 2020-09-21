@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso
 
 //An adapter class is very necessary for the functioning of the recycler view, as it links the data
 //from the data source to the item view holder holder.
-class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<NoteViewHolder>()
+class MovieAdapter(private var movieList: List<Movie>) : RecyclerView.Adapter<NoteViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -52,5 +52,11 @@ class MovieAdapter(private val movieList: List<Movie>) : RecyclerView.Adapter<No
     //this functions returns the list size.
     override fun getItemCount(): Int {
        return movieList.size
+    }
+    open fun updateData(movieListNext: List<Movie>) {
+        //passing the updated list into the adapter's list.
+        movieList = movieListNext
+        //notifying the adapter of the change.
+        notifyDataSetChanged()
     }
 }

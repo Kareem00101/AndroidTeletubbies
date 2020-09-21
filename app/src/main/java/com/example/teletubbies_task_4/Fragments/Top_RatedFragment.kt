@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import com.example.teletubbies_task_4.R
 import com.example.teletubbies_task_4.UI.MainViewModel
@@ -29,24 +30,51 @@ class Top_RatedFragment : Fragment() {
         // Inflate the layout for this fragment
         return view
     }
+    //A var of adapter for functions accessibility
+    private lateinit var RvAdapter: MovieRatedAdapter
+    //Page variable for pagination
+    var page = 1
+    //Pagination bug fix trial
+    var isPagination = false
+    val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         super.onViewCreated(view, savedInstanceState)
 
         //MVVM PART START HERE
-        mainViewModel.movieRatedLiveData
-            .observe(viewLifecycleOwner, {
-                //button_Preview.isEnabled = true
-                bindMoviesDataWithAdapter(it)
-            })
+        mainViewModel.movieRatedLiveData.observe(viewLifecycleOwner, {
+            //checks if this is first load or a new page.
+            if (isPagination) {
+                linearLayoutManager.stackFromEnd
+                RvAdapter.updateData(it)
+                //if this is first load it will set up the recycler.
+            }else {
+                setupRecycler(it)
+            }
+        })
 
         mainViewModel.onError.observe(viewLifecycleOwner, {
             handleMovieError(it)
         })
 
-        mainViewModel.loadTopRatedMovieData()
+        mainViewModel.loadTopRatedMovieData(myPage = page)
         //MVVM PART ENDS HERE
+        main_recycler_2.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1)) {
+                    //this means we reached the scroll limit, therefore we increment the page,
+                    //in order to load the next page of the code.
+                    page++
+                    //setting pagination to true so that movieLiveData updates instead of recreating.
+                    isPagination = true
+                    //calling load function to load the data of the next page.
+                    mainViewModel.loadTopRatedMovieData(myPage = page)
+
+                }
+            }
+        })
     }
     //This functions links data source with the adapter.
     private fun bindMoviesDataWithAdapter(movie: List<MovieRated>)
@@ -55,6 +83,12 @@ class Top_RatedFragment : Fragment() {
         main_recycler_2.layoutManager = LinearLayoutManager(activity,
             LinearLayoutManager.VERTICAL, false )
         main_recycler_2.adapter = MovieRatedAdapter(movie)
+    }
+    private fun setupRecycler(movie: List<MovieRated>) {
+
+        main_recycler_2.layoutManager = linearLayoutManager
+        RvAdapter = MovieRatedAdapter(movie)
+        main_recycler_2.adapter = RvAdapter
     }
 
     //New one instead of the interface.

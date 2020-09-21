@@ -7,7 +7,7 @@ import com.example.teletubbies_task_4.data.ui.MovieRated
 import java.util.*
 
 class MovieRatedMapper {
-    private lateinit var joinedList : LinkedList<MovieRated>
+    var joinedList = LinkedList<MovieRated>()
     fun mapToMovieRatedUi(movieResponse: MovieRatedResponse): List<MovieRated> {
         val Movies = mutableListOf<MovieRated>()
         var title = ""

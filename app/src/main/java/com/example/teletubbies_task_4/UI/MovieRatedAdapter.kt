@@ -10,7 +10,7 @@ import com.example.teletubbies_task_4.data.ui.Movie
 import com.example.teletubbies_task_4.data.ui.MovieRated
 import com.squareup.picasso.Picasso
 
-class MovieRatedAdapter(private val movieRatedList: List<MovieRated>):RecyclerView.Adapter<NoteViewHolder>() {
+class MovieRatedAdapter(private var movieRatedList: List<MovieRated>):RecyclerView.Adapter<NoteViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val movieView = layoutInflater.inflate(R.layout.item_note, parent, false)
@@ -47,5 +47,11 @@ class MovieRatedAdapter(private val movieRatedList: List<MovieRated>):RecyclerVi
 
     override fun getItemCount(): Int {
         return movieRatedList.size
+    }
+    open fun updateData(movieListNext: List<MovieRated>) {
+        //passing the updated list into the adapter's list.
+        movieRatedList = movieListNext
+        //notifying the adapter of the change.
+        notifyDataSetChanged()
     }
 }
