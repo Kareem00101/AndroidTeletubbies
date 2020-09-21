@@ -42,7 +42,7 @@ class MainViewModel(application: Application)  : AndroidViewModel(application),
 
 
     //The function below is to be used inside the activity.(PopularMovies)
-    fun loadMovieData(movieLang: String = "") {
+    fun loadMovieData(movieLang: String = "", myPage:Int) {
         //The Logic below is for future purposes if we add a language choosing functionality.
         if (movieLang == currentMovieLang && this::movieData.isInitialized) {
             _movieLiveData.value = movieData
@@ -53,10 +53,10 @@ class MainViewModel(application: Application)  : AndroidViewModel(application),
             currentMovieLang = movieLang
 
         //Calling requestMovieData function inside the repository file.
-        MovieRepository.requestMovieData(currentMovieLang, this)
+        MovieRepository.requestMovieData(currentMovieLang, this, myPage)
     }
     //The function below is to be used inside the activity.(Top Rated Movies)
-    fun loadTopRatedMovieData(movieRatedLang: String = "") {
+    fun loadTopRatedMovieData(movieRatedLang: String = "", myPage: Int) {
         //The Logic below is for future purposes if we add a language choosing functionality.
         if (movieRatedLang == currentMovieRatedLang  && this::movieRatedData.isInitialized) {
             _movieRatedLiveData.value = movieRatedData
@@ -67,7 +67,7 @@ class MainViewModel(application: Application)  : AndroidViewModel(application),
             currentMovieRatedLang  = movieRatedLang
 
         //Calling requestMovieData function inside the repository file.
-        MovieRepository.requesttTopRatedMovieData(currentMovieRatedLang , this)
+        MovieRepository.requesttTopRatedMovieData(currentMovieRatedLang , this, myPage)
     }
 
     //The implementation of the interface class inside the repository file.

@@ -30,11 +30,11 @@ object MovieRepository {
     //This method is to be called in the MVVM.
     //Popular API
 
-    fun requestMovieData(lang: String, callback: MovieCallBack)
+    fun requestMovieData(lang: String, callback: MovieCallBack, myPage:Int)
     {
 
         //calling the interface get method and passing it the needed info.
-        apiServices.getMovie(apiKey = apiKey, language = lang)
+        apiServices.getMovie(apiKey = apiKey, language = lang, page = myPage)
             .enqueue(object: Callback<MovieResponse> {
 
                 override fun onResponse(
@@ -75,8 +75,8 @@ object MovieRepository {
     }
 
  //Top Rated API
-    fun requesttTopRatedMovieData (lang: String, ratedcallback: MovieRatedCallBack) {
-     apiServices.getTopRated(apiKey = apiKey, language = lang).enqueue(object: Callback<MovieRatedResponse>
+    fun requesttTopRatedMovieData (lang: String, ratedcallback: MovieRatedCallBack, myPage:Int) {
+     apiServices.getTopRated(apiKey = apiKey, language = lang, page = myPage).enqueue(object: Callback<MovieRatedResponse>
      {
          override fun onResponse(
              call: Call<MovieRatedResponse>,
