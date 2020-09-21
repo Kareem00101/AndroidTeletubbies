@@ -1,11 +1,14 @@
 package com.example.teletubbies_task_4.data.Repository
 import android.content.Context
 import com.example.teletubbies_task_4.data.MovieMapper
+import com.example.teletubbies_task_4.data.MovieRatedMapper
 import com.example.teletubbies_task_4.data.Network.ApiInterface
 import com.example.teletubbies_task_4.data.Network.ApiClient
 import com.example.teletubbies_task_4.data.database.AppDatabase
+import com.example.teletubbies_task_4.data.models.remote.MovieRatedResponse
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 import com.example.teletubbies_task_4.data.ui.Movie
+import com.example.teletubbies_task_4.data.ui.MovieRated
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,6 +23,7 @@ object MovieRepository {
     private const val apiKey = "4b7ad36f69f80aa34703d042a53836e4"
     //mapper for linking the data.
     private val mapper by lazy { MovieMapper() }
+    private val mapperRated: MovieRatedMapper by lazy { MovieRatedMapper() }
 
     private lateinit var appDatabase: AppDatabase
 
@@ -71,49 +75,43 @@ object MovieRepository {
     }
 
  //Top Rated API
-    fun requestTopRatedMovieData(lang: String, callback: MovieCallBack)
-    {
+    fun requesttTopRatedMovieData (lang: String, ratedcallback: MovieRatedCallBack) {
+     apiServices.getTopRated(apiKey = apiKey, language = lang).enqueue(object: Callback<MovieRatedResponse>
+     {
+         override fun onResponse(
+             call: Call<MovieRatedResponse>,
+             response: Response<MovieRatedResponse>
+         ) {
+             if(response.isSuccessful)
+             {
+                 println("Response Successful")
+                 //passing the response data to the var
+                 val moviesRatedData = mapperRated.mapToMovieRatedUi(response.body()!!)
 
-        //calling the interface get method and passing it the needed info.
-        apiServices.getTopRated(apiKey = apiKey, language = lang)
-            .enqueue(object: Callback<MovieResponse> {
+                 appDatabase.getMovieRatedDao().addMovies(moviesRatedData)
 
-                override fun onResponse(
-                    call: Call<MovieResponse>,
-                    response: Response<MovieResponse>
-                ) { //start of onResponse
-                    println("Calling onResponse") // a check
+                 //passing the data to the implementer of the interface (MVVM).
+                 ratedcallback.onMovieRatedReady(moviesRatedData)
+             } else if(response.code() in 400..404) {
+                 //in case of an error, helps identifying the error.
+                 val msg = "an error has occurred"
+                 ratedcallback.onMovieRatedError(errorMsg = msg)
+             }
+         }
 
-                    if(response.isSuccessful)
-                    {
-                        println("Response Successful")
-                        //passing the response data to the var
-                        val moviesData = mapper.mapToMovieUi(response.body()!!)
+         override fun onFailure(call: Call<MovieRatedResponse>, t: Throwable) {
+             t.printStackTrace()
+             val msg = "Error while getting movies data"
+             //passing the data to the implementer of the interface (MVVM).
+             ratedcallback.onMovieRatedError(errorMsg = msg)
 
-                        appDatabase.getMovieDao().addMovies(moviesData)
+             ratedcallback.onMovieRatedReady(MovieRepository.appDatabase.getMovieRatedDao().getAllMovies())
+         }
 
-                        //passing the data to the implementer of the interface (MVVM).
-                        callback.onMovieReady(moviesData)
-                    } else if(response.code() in 400..404) {
-                        //in case of an error, helps identifying the error.
-                        val msg = "an error has occurred"
-                        callback.onMovieError(errorMsg = msg)
-                    }
-
-                } //end of onResponse
+     })
+         }
 
 
-                override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                    t.printStackTrace()
-                    val msg = "Error while getting movies data"
-                    //passing the data to the implementer of the interface (MVVM).
-                    callback.onMovieError(errorMsg = msg)
-
-                    callback.onMovieReady(appDatabase.getMovieDao().getAllMovies())
-                } // end of on failure
-
-            })
-    }
 
     fun createDatabase(context: Context) {
         appDatabase = AppDatabase.getDatabase(context)
@@ -125,6 +123,12 @@ object MovieRepository {
     {
         fun onMovieReady(movie: List<Movie>)
         fun onMovieError(errorMsg: String)
+
+    }
+    interface MovieRatedCallBack
+    {
+        fun onMovieRatedReady (movieRated : List<MovieRated>)
+        fun onMovieRatedError(errorMsg: String)
     }
 
 }//end of movieRepository

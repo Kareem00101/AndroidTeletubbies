@@ -5,12 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.teletubbies_task_4.data.ui.Movie
+import com.example.teletubbies_task_4.data.ui.MovieRated
 
 
-@Database(entities = [Movie::class], version = 1, exportSchema = false)
+@Database(entities = [Movie::class, MovieRated::class], version = 2, exportSchema = false)
 abstract class AppDatabase: RoomDatabase()
 {
     abstract fun getMovieDao(): MovieDao
+    abstract fun getMovieRatedDao() : MovieRatedDao
 
     companion object {
         private var INSTANCE: AppDatabase? = null

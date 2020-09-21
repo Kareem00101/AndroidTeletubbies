@@ -1,6 +1,7 @@
 package com.example.teletubbies_task_4.data.Network
 
 import com.example.teletubbies_task_4.data.models.remote.ImageDetails
+import com.example.teletubbies_task_4.data.models.remote.MovieRatedResponse
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -28,7 +29,7 @@ interface ApiInterface {
     fun getTopRated(
         @Query("api_key")apiKey: String,
         @Query("language") language: String = "en_US",      //optional
-    ): Call<MovieResponse>
+    ): Call<MovieRatedResponse>
 
 
     @GET("configuration")
