@@ -1,18 +1,20 @@
 package com.example.teletubbies_task_4.data.Repository
 import android.content.Context
 import com.example.teletubbies_task_4.data.MovieMapper
+import com.example.teletubbies_task_4.data.MovieRatedMapper
 import com.example.teletubbies_task_4.data.Network.ApiInterface
 import com.example.teletubbies_task_4.data.Network.ApiClient
 import com.example.teletubbies_task_4.data.database.AppDatabase
+import com.example.teletubbies_task_4.data.models.remote.MovieRatedResponse
 import com.example.teletubbies_task_4.data.models.remote.MovieResponse
 import com.example.teletubbies_task_4.data.ui.Movie
+import com.example.teletubbies_task_4.data.ui.MovieRated
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
 object MovieRepository {
-
     //for calling the API.
     private val apiServices: ApiInterface by lazy {
         ApiClient.getClient().create(ApiInterface::class.java)
@@ -21,15 +23,18 @@ object MovieRepository {
     private const val apiKey = "4b7ad36f69f80aa34703d042a53836e4"
     //mapper for linking the data.
     private val mapper by lazy { MovieMapper() }
+    private val mapperRated: MovieRatedMapper by lazy { MovieRatedMapper() }
 
     private lateinit var appDatabase: AppDatabase
 
     //This method is to be called in the MVVM.
-    fun requestMovieData(lang: String, callback: MovieCallBack)
+    //Popular API
+
+    fun requestMovieData(lang: String, callback: MovieCallBack, myPage:Int)
     {
 
         //calling the interface get method and passing it the needed info.
-        apiServices.getMovie(apiKey = apiKey, language = lang)
+        apiServices.getMovie(apiKey = apiKey, language = lang, page = myPage)
             .enqueue(object: Callback<MovieResponse> {
 
                 override fun onResponse(
@@ -56,6 +61,7 @@ object MovieRepository {
 
                 } //end of onResponse
 
+
                 override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                     t.printStackTrace()
                     val msg = "Error while getting movies data"
@@ -68,6 +74,45 @@ object MovieRepository {
             })
     }
 
+ //Top Rated API
+    fun requesttTopRatedMovieData (lang: String, ratedcallback: MovieRatedCallBack, myPage:Int) {
+     apiServices.getTopRated(apiKey = apiKey, language = lang, page = myPage).enqueue(object: Callback<MovieRatedResponse>
+     {
+         override fun onResponse(
+             call: Call<MovieRatedResponse>,
+             response: Response<MovieRatedResponse>
+         ) {
+             if(response.isSuccessful)
+             {
+                 println("Response Successful")
+                 //passing the response data to the var
+                 val moviesRatedData = mapperRated.mapToMovieRatedUi(response.body()!!)
+
+                 appDatabase.getMovieRatedDao().addMovies(moviesRatedData)
+
+                 //passing the data to the implementer of the interface (MVVM).
+                 ratedcallback.onMovieRatedReady(moviesRatedData)
+             } else if(response.code() in 400..404) {
+                 //in case of an error, helps identifying the error.
+                 val msg = "an error has occurred"
+                 ratedcallback.onMovieRatedError(errorMsg = msg)
+             }
+         }
+
+         override fun onFailure(call: Call<MovieRatedResponse>, t: Throwable) {
+             t.printStackTrace()
+             val msg = "Error while getting movies data"
+             //passing the data to the implementer of the interface (MVVM).
+             ratedcallback.onMovieRatedError(errorMsg = msg)
+
+             ratedcallback.onMovieRatedReady(MovieRepository.appDatabase.getMovieRatedDao().getAllMovies())
+         }
+
+     })
+         }
+
+
+
     fun createDatabase(context: Context) {
         appDatabase = AppDatabase.getDatabase(context)
     }
@@ -78,6 +123,12 @@ object MovieRepository {
     {
         fun onMovieReady(movie: List<Movie>)
         fun onMovieError(errorMsg: String)
+
+    }
+    interface MovieRatedCallBack
+    {
+        fun onMovieRatedReady (movieRated : List<MovieRated>)
+        fun onMovieRatedError(errorMsg: String)
     }
 
 }//end of movieRepository
