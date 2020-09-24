@@ -32,47 +32,28 @@ class popularrFragment : Fragment() {
     var page = 1
     //Pagination bug fix trial
     var isPagination = false
-    val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+    //var amIBack: Boolean = false
+    //val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         super.onViewCreated(view, savedInstanceState)
-
-        //MVVM PART START HERE
+        doTheJob()
+        //doItFast()
+       /* val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         mainViewModel.movieLiveData.observe(viewLifecycleOwner, {
-            //checks if this is first load or a new page.
-            if (isPagination) {
-                linearLayoutManager.stackFromEnd
-                RvAdapter.updateData(it)
-                //if this is first load it will set up the recycler.
-            }else {
-                setupRecycler(it)
-            }
+            setupRecycler(it)
         })
-
         mainViewModel.onError.observe(viewLifecycleOwner, {
             handleMovieError(it)
         })
+        mainViewModel.loadMovieData(myPage = 1)*/
 
-        mainViewModel.loadMovieData(myPage = page)
-        //MVVM PART ENDS HERE
 
-        //For pagination
-        main_recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if (!recyclerView.canScrollVertically(1)) {
-                    //this means we reached the scroll limit, therefore we increment the page,
-                    //in order to load the next page of the code.
-                    page++
-                    //setting pagination to true so that movieLiveData updates instead of recreating.
-                    isPagination = true
-                    //calling load function to load the data of the next page.
-                    mainViewModel.loadMovieData(myPage = page)
 
-                }
-            }
-        })
+
+
+
     }
         //This functions links data source with the adapter.
         private fun bindMoviesDataWithAdapter(movie: List<Movie>)
@@ -83,7 +64,7 @@ class popularrFragment : Fragment() {
             main_recycler.adapter = MovieAdapter(movie)
         }
         private fun setupRecycler(movie: List<Movie>) {
-
+            val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         main_recycler.layoutManager = linearLayoutManager
         RvAdapter = MovieAdapter(movie)
         main_recycler.adapter = RvAdapter
@@ -94,6 +75,65 @@ class popularrFragment : Fragment() {
 
             Toast.makeText(activity, errorMsg, Toast.LENGTH_LONG).show()
         }
+    private fun doTheJob(){
+        val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        var firstTime = true
+        //var isPagination = false
+        //MVVM PART START HERE
+        //if(firstTime){doItFast()}
+       //else {
+            mainViewModel.movieLiveData.observe(viewLifecycleOwner, {
+                //checks if this is first load or a new page.
+                if (isPagination&&!firstTime) {
+                    linearLayoutManager.stackFromEnd
+                    RvAdapter.updateData(it)
+                    //if this is first load it will set up the recycler.
+                } else {
+                    setupRecycler(it)
+                }
+            })
+            mainViewModel.onError.observe(viewLifecycleOwner, {
+                handleMovieError(it)
+            })
+
+            mainViewModel.loadMovieData(myPage = page)
+            //firstTime = false
+            //MVVM PART ENDS HERE
+            //For pagination
+            main_recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if (!recyclerView.canScrollVertically(1)) {
+                        //this means we reached the scroll limit, therefore we increment the page,
+                        //in order to load the next page of the code.
+                        page++
+                        //setting pagination to true so that movieLiveData updates instead of recreating.
+                        isPagination = true
+                        //calling load function to load the data of the next page.
+                        mainViewModel.loadMovieData(myPage = page)
+
+                    }
+                }
+            })
+        //}
+    }
+    private fun doItFast()
+    {
+        val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        mainViewModel.movieLiveData.observe(viewLifecycleOwner, {
+            setupRecycler(it)
+        })
+        mainViewModel.onError.observe(viewLifecycleOwner, {
+            handleMovieError(it)
+        })
+        mainViewModel.loadMovieData(myPage = page)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        //amIBack = true
+    }
 
 
 
