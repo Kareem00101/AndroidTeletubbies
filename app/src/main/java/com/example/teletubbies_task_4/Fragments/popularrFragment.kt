@@ -91,6 +91,7 @@ class popularrFragment : Fragment() {
             Toast.makeText(activity, errorMsg, Toast.LENGTH_LONG).show()
         }
     private fun doTheJob(){
+        var isPaginated = false
         val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         var firstTime = true
@@ -100,12 +101,13 @@ class popularrFragment : Fragment() {
        //else {
             mainViewModel.movieLiveData.observe(viewLifecycleOwner, {
                 //checks if this is first load or a new page.
-                if (isPagination&&!firstTime) {
+                if (isPaginated&&!firstTime) {
                     linearLayoutManager.stackFromEnd
                     RvAdapter.updateData(it)
                     //if this is first load it will set up the recycler.
                 } else {
                     setupRecycler(it)
+                    isPaginated = false
                 }
             })
             mainViewModel.onError.observe(viewLifecycleOwner, {
@@ -124,7 +126,7 @@ class popularrFragment : Fragment() {
                         //in order to load the next page of the code.
                         page++
                         //setting pagination to true so that movieLiveData updates instead of recreating.
-                        isPagination = true
+                        isPaginated = true
                         //calling load function to load the data of the next page.
                         mainViewModel.loadMovieData(myPage = page)
 
