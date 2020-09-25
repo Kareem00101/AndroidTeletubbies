@@ -36,14 +36,15 @@ class Top_RatedFragment : Fragment() {
     var page = 1
     //Pagination bug fix trial
     var isPagination = false
-    val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+    //val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         super.onViewCreated(view, savedInstanceState)
+        doTheJob()
 
         //MVVM PART START HERE
-        mainViewModel.movieRatedLiveData.observe(viewLifecycleOwner, {
+        /*mainViewModel.movieRatedLiveData.observe(viewLifecycleOwner, {
             //checks if this is first load or a new page.
             if (isPagination) {
                 linearLayoutManager.stackFromEnd
@@ -74,7 +75,7 @@ class Top_RatedFragment : Fragment() {
 
                 }
             }
-        })
+        })*/
     }
     //This functions links data source with the adapter.
     private fun bindMoviesDataWithAdapter(movie: List<MovieRated>)
@@ -86,6 +87,7 @@ class Top_RatedFragment : Fragment() {
     }
     private fun setupRecycler(movie: List<MovieRated>) {
 
+        val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         main_recycler_2.layoutManager = linearLayoutManager
         RvAdapter = MovieRatedAdapter(movie)
         main_recycler_2.adapter = RvAdapter
@@ -95,6 +97,49 @@ class Top_RatedFragment : Fragment() {
     private fun handleMovieError(errorMsg: String) {
 
         Toast.makeText(activity, errorMsg, Toast.LENGTH_LONG).show()
+    }
+    private fun doTheJob(){
+        val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        var firstTime = true
+        //var isPagination = false
+        //MVVM PART START HERE
+        //if(firstTime){doItFast()}
+        //else {
+        mainViewModel.movieRatedLiveData.observe(viewLifecycleOwner, {
+            //checks if this is first load or a new page.
+            if (isPagination&&!firstTime) {
+                linearLayoutManager.stackFromEnd
+                RvAdapter.updateData(it)
+                //if this is first load it will set up the recycler.
+            } else {
+                setupRecycler(it)
+            }
+        })
+        mainViewModel.onError.observe(viewLifecycleOwner, {
+            handleMovieError(it)
+        })
+
+        mainViewModel.loadTopRatedMovieData(myPage = page)
+        firstTime = false
+        //MVVM PART ENDS HERE
+        //For pagination
+        main_recycler_2.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1)) {
+                    //this means we reached the scroll limit, therefore we increment the page,
+                    //in order to load the next page of the code.
+                    page++
+                    //setting pagination to true so that movieLiveData updates instead of recreating.
+                    isPagination = true
+                    //calling load function to load the data of the next page.
+                    mainViewModel.loadTopRatedMovieData(myPage = page)
+
+                }
+            }
+        })
+        //}
     }
 
 

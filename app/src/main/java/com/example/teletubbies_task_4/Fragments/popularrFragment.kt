@@ -1,5 +1,6 @@
 package com.example.teletubbies_task_4.Fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -40,7 +41,7 @@ class popularrFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         doTheJob()
         //doItFast()
-       /* val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+       /*val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         mainViewModel.movieLiveData.observe(viewLifecycleOwner, {
             setupRecycler(it)
         })
@@ -53,7 +54,21 @@ class popularrFragment : Fragment() {
 
 
 
+        /*main_recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1)) {
+                    //this means we reached the scroll limit, therefore we increment the page,
+                    //in order to load the next page of the code.
+                    page++
+                    //setting pagination to true so that movieLiveData updates instead of recreating.
+                    isPagination = true
+                    //calling load function to load the data of the next page.
+                    mainViewModel.loadMovieData(myPage = page)
 
+                }
+            }
+        })*/
     }
         //This functions links data source with the adapter.
         private fun bindMoviesDataWithAdapter(movie: List<Movie>)
@@ -98,7 +113,7 @@ class popularrFragment : Fragment() {
             })
 
             mainViewModel.loadMovieData(myPage = page)
-            //firstTime = false
+            firstTime = false
             //MVVM PART ENDS HERE
             //For pagination
             main_recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -133,6 +148,20 @@ class popularrFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         //amIBack = true
+    }
+    fun bindMovieData( movie: List<Movie>, recyclerView: RecyclerView, isPagination:Boolean)
+    {
+        val adapter = MovieAdapter(movie)
+        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        if(isPagination)
+        {
+            adapter.updateData(movie)
+            layoutManager.stackFromEnd
+            return
+        }
+        recyclerView.hasFixedSize()
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = adapter
     }
 
 
