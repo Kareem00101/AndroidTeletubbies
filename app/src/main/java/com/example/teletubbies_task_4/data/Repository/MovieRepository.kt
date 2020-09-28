@@ -75,7 +75,7 @@ object MovieRepository {
     }
 
  //Top Rated API
-    fun requesttTopRatedMovieData (lang: String, ratedcallback: MovieRatedCallBack, myPage:Int) {
+    fun requestTopRatedMovieData (lang: String, ratedcallback: MovieRatedCallBack, myPage:Int) {
      apiServices.getTopRated(apiKey = apiKey, language = lang, page = myPage).enqueue(object: Callback<MovieRatedResponse>
      {
          override fun onResponse(

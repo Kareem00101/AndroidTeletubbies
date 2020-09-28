@@ -14,8 +14,11 @@ interface MovieDao {
     @Query("SELECT * FROM Movie_table")
     fun getAllMovies(): List<Movie>
 
-    /*@Query("SELECT * FROM Movie_table")
-    fun getTopMovies(): List<Movie>*/
+
+    //For favorite list.
+    @Query("SELECT * FROM Movie_table where isFavorite=0")
+    fun getFavoriteMovies(): List<Movie>
+
 
     @Delete
     fun deleteMovie(movie: Movie)

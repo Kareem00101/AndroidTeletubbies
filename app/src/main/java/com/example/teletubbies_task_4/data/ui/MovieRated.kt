@@ -16,7 +16,7 @@ data class MovieRated (
     val language: String,
     val release: String,
     //Used in the MovieOverview Screen.
-    val description: String = " "
+    val description: String = " ",
 
     //Not Used Yet.
     /*extras
@@ -24,4 +24,8 @@ data class MovieRated (
     val votes: Int,
     val adult: Boolean
     */
+
+    //For favorite list
+    var isFavorite: Boolean = false
+
 )

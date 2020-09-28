@@ -1,6 +1,5 @@
 package com.example.teletubbies_task_4.Fragments
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.teletubbies_task_4.R
 import com.example.teletubbies_task_4.UI.MainViewModel
 import com.example.teletubbies_task_4.UI.MovieAdapter
-import com.example.teletubbies_task_4.UI.RecyclerViewMovies
 import com.example.teletubbies_task_4.data.ui.Movie
 import kotlinx.android.synthetic.main.fragment_popularr.*
 
@@ -45,11 +43,11 @@ class popularrFragment : Fragment() {
             //setting up the linear layout.
             val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             //linking the layout to the recycler.
-            main_recycler.layoutManager = linearLayoutManager
+            main_recycler_3.layoutManager = linearLayoutManager
             //setting up the adapter.
             RvAdapter = MovieAdapter(movie)
             //linking the adapter to the recycler.
-            main_recycler.adapter = RvAdapter
+            main_recycler_3.adapter = RvAdapter
         }
 
         //New one instead of the interface.
@@ -81,6 +79,7 @@ class popularrFragment : Fragment() {
                     //Update adapter data instead of recreating it! (to avoid starting at top)
                     RvAdapter.updateData(it)
 
+
                 } else {
                     //if this is first load it will set up the recycler.
                     setupRecycler(it)
@@ -96,7 +95,7 @@ class popularrFragment : Fragment() {
             //MVVM PART ENDS HERE
 
             //Recycler scroll listener for pagination.
-            main_recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            main_recycler_3.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
 

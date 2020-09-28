@@ -67,7 +67,7 @@ class MainViewModel(application: Application)  : AndroidViewModel(application),
             currentMovieRatedLang  = movieRatedLang
 
         //Calling requestMovieData function inside the repository file.
-        MovieRepository.requesttTopRatedMovieData(currentMovieRatedLang , this, myPage)
+        MovieRepository.requestTopRatedMovieData(currentMovieRatedLang , this, myPage)
     }
 
     //The implementation of the interface class inside the repository file.

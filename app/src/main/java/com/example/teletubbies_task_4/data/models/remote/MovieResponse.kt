@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class MovieResponse(
 
     @SerializedName("results")
-    val resultsList: List<MovieDetails>
+    val resultsList: List<MovieDetails>,
 
 )
 
@@ -36,7 +36,10 @@ data class MovieDetails(
     @SerializedName("vote_count")
     val votes: Int,
     @SerializedName("adult")
-    val adult: Boolean
+    val adult: Boolean,
+
+    //For the favoriteList
+    //var isFavorite: Boolean = false
 )
 
 
