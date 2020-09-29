@@ -106,10 +106,34 @@ object MovieRepository {
              ratedcallback.onMovieRatedError(errorMsg = msg)
 
              ratedcallback.onMovieRatedReady(MovieRepository.appDatabase.getMovieRatedDao().getAllMovies())
-         }
+            }
 
-     })
-         }
+        })
+     }
+    fun requestForFavorite(myMovieID:Long){
+        apiServices.getMovie(apiKey = apiKey, page = 1).enqueue(object: Callback<MovieResponse>
+        {
+            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
+                println("Response Successful")
+                //passing the response data to the var
+                val moviesData = mapper.mapToMovieUi(response.body()!!)
+                moviesData.forEach {
+                    if(myMovieID == it.id)
+                    {
+                        println("Yesssssssssssssssssssssssssssssssssssss")
+                        it.isFavorite = true
+                    }
+                         }
+                appDatabase.getMovieDao().addMovies(moviesData)
+            }
+
+            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+                t.printStackTrace()
+                val msg = "Error while getting movies data"
+            }
+
+        })
+    }
 
 
 

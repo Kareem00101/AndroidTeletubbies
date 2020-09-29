@@ -26,7 +26,7 @@ class MovieDetailsActivity() : AppCompatActivity() {
         val myMovieID: Long? = intent.extras?.getLong("movieID")
 
         //For FavoriteList
-        favorite_button.setOnClickListener {
+        /*favorite_button.setOnClickListener {
             var x : List<Movie> = MovieRepository.getAllMovies()
             println("$myMovieID, ${x.size}")
             x.forEach {
@@ -38,6 +38,11 @@ class MovieDetailsActivity() : AppCompatActivity() {
                 }
             }
 
+        }*/
+        favorite_button.setOnClickListener {
+            if (myMovieID != null) {
+                MovieRepository.requestForFavorite(myMovieID = myMovieID)
+            }
         }
 
 
