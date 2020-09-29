@@ -14,7 +14,7 @@ interface MovieRatedDao {
 
     //For favorite list.
     @Query("SELECT * FROM MovieRated_table where isFavorite=1")
-    fun getFavoriteMovies(): List<MovieRated>
+    fun getFavoriteTopRatedMovies(): List<MovieRated>
 
     @Delete
     fun deleteMovie(movie: MovieRated)

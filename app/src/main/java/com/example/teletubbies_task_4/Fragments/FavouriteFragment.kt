@@ -1,20 +1,17 @@
 package com.example.teletubbies_task_4.Fragments
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teletubbies_task_4.R
-import com.example.teletubbies_task_4.UI.MainViewModel
 import com.example.teletubbies_task_4.UI.MovieAdapter
 import com.example.teletubbies_task_4.data.Repository.MovieRepository
-import com.example.teletubbies_task_4.data.database.AppDatabase
-import com.example.teletubbies_task_4.data.ui.Movie
+import kotlinx.android.synthetic.main.fragment_favourite.*
 import kotlinx.android.synthetic.main.fragment_popularr.*
+import kotlinx.android.synthetic.main.fragment_popularr.main_recycler
 
 
 class FavouriteFragment : Fragment() {

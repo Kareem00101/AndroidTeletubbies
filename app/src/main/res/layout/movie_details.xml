@@ -60,8 +60,9 @@
         android:layout_width="154dp"
         android:layout_height="51dp"
         android:layout_marginStart="219dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="550dp"
         android:layout_marginEnd="38dp"
+        android:layout_marginBottom="5dp"
         android:background="#FFFFFF"
         android:backgroundTint="#730808"
         android:text="Add To Favorite!"
@@ -69,7 +70,7 @@
         android:textColor="#F1EEEE"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/RemoveFromFavorite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -79,8 +80,9 @@
         android:layout_width="154dp"
         android:layout_height="51dp"
         android:layout_marginStart="219dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="38dp"
+        android:layout_marginBottom="100dp"
         android:background="#FFFFFF"
         android:backgroundTint="#730808"
         android:text="Remove From Favorite!"
@@ -90,8 +92,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.791" />
+        app:layout_constraintTop_toBottomOf="@+id/favorite_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

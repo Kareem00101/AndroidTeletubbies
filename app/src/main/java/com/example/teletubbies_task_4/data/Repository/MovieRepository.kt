@@ -26,6 +26,7 @@ object MovieRepository {
     private val mapper by lazy { MovieMapper() }
     private val mapperRated: MovieRatedMapper by lazy { MovieRatedMapper() }
     var x = LinkedList<Movie>()
+    var y = LinkedList<MovieRated>()
     private lateinit var appDatabase: AppDatabase
 
     //This method is to be called in the MVVM.
@@ -65,7 +66,7 @@ object MovieRepository {
 
                 override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                     t.printStackTrace()
-                    val msg = "Error while getting movies data"
+                    val msg = "Error while getting popularMovies data"
                     //passing the data to the implementer of the interface (MVVM).
                     callback.onMovieError(errorMsg = msg)
 
@@ -102,7 +103,7 @@ object MovieRepository {
 
          override fun onFailure(call: Call<MovieRatedResponse>, t: Throwable) {
              t.printStackTrace()
-             val msg = "Error while getting movies data"
+             val msg = "Error while getting topRatedMovies data"
              //passing the data to the implementer of the interface (MVVM).
              ratedcallback.onMovieRatedError(errorMsg = msg)
 
@@ -132,10 +133,36 @@ object MovieRepository {
 
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                 t.printStackTrace()
-                val msg = "Error while getting movies data"
+                val msg = "Error while getting PopularFavoriteList data"
             }
 
         })
+        apiServices.getTopRated(apiKey = apiKey, page=1).enqueue(object: Callback<MovieRatedResponse>
+        {
+            override fun onResponse(
+                call: Call<MovieRatedResponse>,
+                response: Response<MovieRatedResponse>
+            ) {
+                val moviesData: List<MovieRated> = mapperRated.mapToMovieRatedUi(response.body()!!)
+                moviesData.forEach{
+                    if(myMovieID == it.id)
+                    {
+                        println("Yeaaaaaaaaaaaaaah")
+                        it.isFavorite = true
+                        y.add(it)
+                    }
+                }
+                appDatabase.getMovieRatedDao().addMovies(y)
+            }
+
+            override fun onFailure(call: Call<MovieRatedResponse>, t: Throwable) {
+                t.printStackTrace()
+                val msg = "Error while getting topRatedFavoriteList data"
+
+            }
+
+        })
+
 
     }
 
@@ -147,6 +174,10 @@ object MovieRepository {
     fun getFavorite() : List<Movie>
     {
         return appDatabase.getMovieDao().getFavoriteMovies()
+    }
+    fun getTopRatedFavorite() : List<MovieRated>
+    {
+        return appDatabase.getMovieRatedDao().getFavoriteTopRatedMovies()
     }
     fun getAllMovies():List<Movie>
     {

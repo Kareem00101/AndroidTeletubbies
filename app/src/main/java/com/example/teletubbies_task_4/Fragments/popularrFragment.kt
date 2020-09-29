@@ -43,11 +43,11 @@ class popularrFragment : Fragment() {
             //setting up the linear layout.
             val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             //linking the layout to the recycler.
-            main_recycler_3.layoutManager = linearLayoutManager
+            main_recycler.layoutManager = linearLayoutManager
             //setting up the adapter.
             RvAdapter = MovieAdapter(movie)
             //linking the adapter to the recycler.
-            main_recycler_3.adapter = RvAdapter
+            main_recycler.adapter = RvAdapter
         }
 
         //New one instead of the interface.
@@ -95,7 +95,7 @@ class popularrFragment : Fragment() {
             //MVVM PART ENDS HERE
 
             //Recycler scroll listener for pagination.
-            main_recycler_3.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            main_recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
 
