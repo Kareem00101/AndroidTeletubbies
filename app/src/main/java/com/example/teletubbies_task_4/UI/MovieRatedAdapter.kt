@@ -6,16 +6,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teletubbies_task_4.R
-import com.example.teletubbies_task_4.data.models.remote.MovieDetails
 import com.example.teletubbies_task_4.data.ui.Movie
 import com.example.teletubbies_task_4.data.ui.MovieRated
 import com.squareup.picasso.Picasso
 
-
-//An adapter class is very necessary for the functioning of the recycler view, as it links the data
-//from the data source to the item view holder holder.
-class MovieAdapter(private var movieList: List<Movie>) : RecyclerView.Adapter<NoteViewHolder>()
-{
+class MovieRatedAdapter(private var movieRatedList: List<MovieRated>):RecyclerView.Adapter<NoteViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val movieView = layoutInflater.inflate(R.layout.item_note, parent, false)
@@ -23,7 +18,7 @@ class MovieAdapter(private var movieList: List<Movie>) : RecyclerView.Adapter<No
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        val movieLinker = movieList.get(position)
+        val movieLinker = movieRatedList.get(position)
 
         //Binding movieDetails with the item_note through the adapter.
         holder.movieLanguage.text = movieLinker.language
@@ -51,13 +46,13 @@ class MovieAdapter(private var movieList: List<Movie>) : RecyclerView.Adapter<No
 
         }
     }
-    //this functions returns the list size.
+
     override fun getItemCount(): Int {
-       return movieList.size
+        return movieRatedList.size
     }
-    open fun updateData(movieListNext: List<Movie>) {
+    open fun updateData(movieListNext: List<MovieRated>) {
         //passing the updated list into the adapter's list.
-        movieList = movieListNext
+        movieRatedList = movieListNext
         //notifying the adapter of the change.
         notifyDataSetChanged()
     }

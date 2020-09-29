@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UI.MovieDetailsActivity"></activity>
-        <activity android:name=".UI.MainActivity2"></activity>
-        <activity android:name=".UI.MainActivity"></activity>
+        <activity android:name=".UI.MovieDetailsActivity" />
+        <activity android:name=".UI.MainActivity2" />
+        <activity android:name=".UI.MainActivity" />
         <activity android:name=".UI.RecyclerViewMovies" />
         <activity
             android:name=".UI.StartScreen"

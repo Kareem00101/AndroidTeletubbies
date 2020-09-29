@@ -3,15 +3,15 @@ package com.example.teletubbies_task_4.data.models.remote
 import com.google.gson.annotations.SerializedName
 
 
-data class MovieResponse(
+data class MovieRatedResponse(
 
     @SerializedName("results")
-    val resultsList: List<MovieDetails>,
+    val resultsList: List<MovieDetails>
 
 )
 
 
-data class MovieDetails(
+data class MovieRatedDetails(
 //Main Data
     @SerializedName("title")                //Movie Title
     val title: String,
@@ -36,15 +36,12 @@ data class MovieDetails(
     @SerializedName("vote_count")
     val votes: Int,
     @SerializedName("adult")
-    val adult: Boolean,
-
-    //For the favoriteList
-    //var isFavorite: Boolean = false
+    val adult: Boolean
 )
 
 
 // This class is for the configuration API which I added so that the poster and backdrop paths are complete.
-data class ImageDetails(
+data class ImageRatedDetails(
     @SerializedName("secure_base_url")
     val baseURL: String,
     @SerializedName("backdrop_sizes")

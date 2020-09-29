@@ -1,12 +1,10 @@
 package com.example.teletubbies_task_4.data.ui
 
-//imports
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
-@Entity(tableName = "Movie_table")
-data class Movie (
+@Entity(tableName = "MovieRated_table")
+data class MovieRated (
     //We have an ID from our movie response.
     @PrimaryKey
     val id: Long,
@@ -29,4 +27,5 @@ data class Movie (
 
     //For favorite list
     var isFavorite: Boolean = false
+
 )
