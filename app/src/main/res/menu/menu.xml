@@ -5,9 +5,7 @@
         android:icon="@drawable/ic_home"
         android:title="Home"
         />
-    <item android:id="@+id/Settings"
-        android:icon="@drawable/settings_icon"
-        android:title="Settings"
+
         />
 
     <item android:id="@+id/popular"
@@ -25,6 +23,12 @@
         android:icon="@drawable/top_rated_icon"
         android:title="Top Rated Movies"
         />
+
+    <item android:id="@+id/favouriteTopRated"
+        android:icon="@drawable/favourite_icon"
+        android:title="Favourite Top Rated"
+        />
+
 
 
 </menu>

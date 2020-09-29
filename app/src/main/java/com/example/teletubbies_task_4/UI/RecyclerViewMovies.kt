@@ -24,6 +24,8 @@ class RecyclerViewMovies : AppCompatActivity() {
         val topRatedFragment= Top_RatedFragment()
         val popularFragment= popularrFragment()
         val homeFragment= HomeFragment()
+val favouriteTopRatedFragment = FavouriteTopRatedFragment ()
+
 
 
 //fragments
@@ -36,6 +38,8 @@ class RecyclerViewMovies : AppCompatActivity() {
                 R.id.TopRated -> makeCurrentFragment(topRatedFragment)
                 R.id.home -> makeCurrentFragment(homeFragment)
                 R.id.popular -> makeCurrentFragment(popularFragment)
+                R.id.favouriteTopRated -> makeCurrentFragment(favouriteFragment)
+
             }
             true
         }
