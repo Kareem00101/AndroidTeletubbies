@@ -19,7 +19,6 @@ class RecyclerViewMovies : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview_movies)
 
-        val settingsFragment = SettingsFragment()
         val favouriteFragment= FavouriteFragment()
         val topRatedFragment= Top_RatedFragment()
         val popularFragment= popularrFragment()
@@ -33,12 +32,11 @@ val favouriteTopRatedFragment = FavouriteTopRatedFragment ()
         makeCurrentFragment(homeFragment)
         bottom_navigation.setOnNavigationItemReselectedListener {
             when(it.itemId){
-                R.id.Settings -> makeCurrentFragment(settingsFragment)
                 R.id.favourite -> makeCurrentFragment(favouriteFragment)
                 R.id.TopRated -> makeCurrentFragment(topRatedFragment)
                 R.id.home -> makeCurrentFragment(homeFragment)
                 R.id.popular -> makeCurrentFragment(popularFragment)
-                R.id.favouriteTopRated -> makeCurrentFragment(favouriteFragment)
+                R.id.favouriteTopRated -> makeCurrentFragment(favouriteTopRatedFragment)
 
             }
             true
