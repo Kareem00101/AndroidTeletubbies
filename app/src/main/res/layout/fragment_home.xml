@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backk"
+    android:background="@drawable/collection"
     tools:context=".Fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/movie_l1"
-        android:layout_width="401dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="60dp"
-        android:gravity="center"
-        android:text="Welcome to our movie app"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        />
+
 
 </FrameLayout>
