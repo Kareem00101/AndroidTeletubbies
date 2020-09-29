@@ -12,6 +12,7 @@ import com.example.teletubbies_task_4.data.ui.MovieRated
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 
 object MovieRepository {
@@ -24,7 +25,7 @@ object MovieRepository {
     //mapper for linking the data.
     private val mapper by lazy { MovieMapper() }
     private val mapperRated: MovieRatedMapper by lazy { MovieRatedMapper() }
-
+    var x = LinkedList<Movie>()
     private lateinit var appDatabase: AppDatabase
 
     //This method is to be called in the MVVM.
@@ -117,14 +118,16 @@ object MovieRepository {
                 println("Response Successful")
                 //passing the response data to the var
                 val moviesData = mapper.mapToMovieUi(response.body()!!)
-                moviesData.forEach {
+                moviesData.forEach { it ->
                     if(myMovieID == it.id)
                     {
                         println("Yesssssssssssssssssssssssssssssssssssss")
                         it.isFavorite = true
+                        x.add(it)
                     }
                          }
-                appDatabase.getMovieDao().addMovies(moviesData)
+
+                appDatabase.getMovieDao().addMovies(x)
             }
 
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
@@ -133,6 +136,7 @@ object MovieRepository {
             }
 
         })
+
     }
 
 
@@ -147,6 +151,10 @@ object MovieRepository {
     fun getAllMovies():List<Movie>
     {
         return appDatabase.getMovieDao().getAllMovies()
+    }
+    fun addFavoriteMovies(favoriteMovies: List<Movie>)
+    {
+        appDatabase.getMovieDao().addMovies(favoriteMovies)
     }
 
     //interface class, necessary in order to create an object from the main activity.
