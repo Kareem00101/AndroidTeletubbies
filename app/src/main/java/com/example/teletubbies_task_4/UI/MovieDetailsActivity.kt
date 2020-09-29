@@ -21,9 +21,11 @@ class MovieDetailsActivity() : AppCompatActivity() {
         movieOverviewText.text = Html.fromHtml("$movieOverview")
         val movieTitle : String? = intent.extras?.getString("title")
         movieOverviewTitle.text= Html.fromHtml("$movieTitle")
+
+        //For FavoriteList, getting the ID inorder to check the item i need.
         val myMovieID: Long? = intent.extras?.getLong("movieID")
 
-
+        //For FavoriteList
         favorite_button.setOnClickListener {
             var x : List<Movie> = MovieRepository.getAllMovies()
             println("$myMovieID, ${x.size}")
@@ -37,6 +39,7 @@ class MovieDetailsActivity() : AppCompatActivity() {
             }
 
         }
+
 
     }
 }

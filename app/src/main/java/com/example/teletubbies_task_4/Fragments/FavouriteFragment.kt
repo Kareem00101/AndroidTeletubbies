@@ -29,10 +29,6 @@ class FavouriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecycler()
-        /*val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        mainViewModel.movieLiveData.observe(viewLifecycleOwner,{
-            setupRecycler()
-        })*/
 
     }
 

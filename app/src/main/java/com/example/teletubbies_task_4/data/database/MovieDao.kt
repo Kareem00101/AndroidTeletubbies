@@ -8,8 +8,6 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addMovies(movie: List<Movie>)
 
-    /*@Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addTopMovies(movie: List<Movie>)*/
 
     @Query("SELECT * FROM Movie_table")
     fun getAllMovies(): List<Movie>
@@ -18,8 +16,6 @@ interface MovieDao {
     //For favorite list.
     @Query("SELECT * FROM Movie_table where isFavorite = 1")
     fun getFavoriteMovies(): List<Movie>
-
-
 
 
     @Delete
