@@ -73,4 +73,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/RemoveFromFavorite"
+        android:layout_width="154dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="219dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="38dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#730808"
+        android:text="Remove From Favorite!"
+        android:textAllCaps="false"
+        android:textColor="#F1EEEE"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.791" />
 </androidx.constraintlayout.widget.ConstraintLayout>
