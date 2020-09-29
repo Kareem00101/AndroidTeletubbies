@@ -4,14 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#040404">
+    android:background="#000000"
+    tools:context=".UI.MovieDetailsActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_halfScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <ImageView
+        android:id="@+id/movie_imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_halfScreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/movieOverviewTitle"
         android:layout_width="333dp"
         android:layout_height="97dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="276dp"
         android:gravity="center"
         android:includeFontPadding="false"
         android:text="Movie Overview"
@@ -28,16 +46,17 @@
         style="@style/Widget.AppCompat.RatingBar.Small"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:clickable="true"
         android:focusable="true"
         android:foregroundGravity="center"
         android:numStars="6"
         android:rating="4.5"
         android:theme="@style/RatingBar"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@id/movieOverviewTitle"
         app:layout_constraintStart_toStartOf="@id/movieOverviewTitle"
-        app:layout_constraintTop_toBottomOf="@id/movieOverviewTitle" />
+        app:layout_constraintTop_toBottomOf="@id/movieOverviewTitle"
+        />
 
     <TextView
         android:id="@+id/movieOverviewText"
@@ -54,44 +73,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/itemRatingBar"
         tools:text="TextView" />
-
-    <Button
-        android:id="@+id/favorite_button"
-        android:layout_width="154dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="219dp"
-        android:layout_marginTop="550dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="5dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#730808"
-        android:text="Add To Favorite!"
-        android:textAllCaps="false"
-        android:textColor="#F1EEEE"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/RemoveFromFavorite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/RemoveFromFavorite"
-        android:layout_width="154dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="219dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="100dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#730808"
-        android:text="Remove From Favorite!"
-        android:textAllCaps="false"
-        android:textColor="#F1EEEE"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favorite_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
