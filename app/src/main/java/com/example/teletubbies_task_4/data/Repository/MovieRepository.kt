@@ -116,6 +116,14 @@ object MovieRepository {
     fun createDatabase(context: Context) {
         appDatabase = AppDatabase.getDatabase(context)
     }
+    fun getFavorite() : List<Movie>
+    {
+        return appDatabase.getMovieDao().getFavoriteMovies()
+    }
+    fun getAllMovies():List<Movie>
+    {
+        return appDatabase.getMovieDao().getAllMovies()
+    }
 
     //interface class, necessary in order to create an object from the main activity.
     //Main activity must implement the interface.

@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teletubbies_task_4.R
+import com.example.teletubbies_task_4.UI.MainViewModel
 import com.example.teletubbies_task_4.UI.MovieAdapter
 import com.example.teletubbies_task_4.data.Repository.MovieRepository
 import com.example.teletubbies_task_4.data.database.AppDatabase
@@ -26,25 +28,24 @@ class FavouriteFragment : Fragment() {
     private lateinit var RvAdapter: MovieAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
+        setupRecycler()
+        /*val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        mainViewModel.movieLiveData.observe(viewLifecycleOwner,{
+            setupRecycler()
+        })*/
 
     }
-    private lateinit var appDatabase: AppDatabase
-    fun RequestFromDataBase() {
 
-         setupRecycler(appDatabase.getMovieDao().getFavoriteMovies())
-    }
-    private fun setupRecycler(movie: List<Movie>) {
+
+    private fun setupRecycler() {
         //setting up the linear layout.
         val linearLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         //linking the layout to the recycler.
         main_recycler_3.layoutManager = linearLayoutManager
         //setting up the adapter.
-        RvAdapter = MovieAdapter(movie)
+        RvAdapter = MovieAdapter(MovieRepository.getFavorite())
         //linking the adapter to the recycler.
         main_recycler_3.adapter = RvAdapter
     }
 
-
-    }
+}

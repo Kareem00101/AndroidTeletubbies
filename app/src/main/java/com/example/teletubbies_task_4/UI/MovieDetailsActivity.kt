@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.teletubbies_task_4.R
 import kotlinx.android.synthetic.main.movie_details.*
 import com.example.teletubbies_task_4.UI.RecyclerViewMovies
+import com.example.teletubbies_task_4.data.Repository.MovieRepository
+import com.example.teletubbies_task_4.data.ui.Movie
 
 
 class MovieDetailsActivity() : AppCompatActivity() {
@@ -19,11 +21,22 @@ class MovieDetailsActivity() : AppCompatActivity() {
         movieOverviewText.text = Html.fromHtml("$movieOverview")
         val movieTitle : String? = intent.extras?.getString("title")
         movieOverviewTitle.text= Html.fromHtml("$movieTitle")
+        val myMovieID: Long? = intent.extras?.getLong("movieID")
+
 
         favorite_button.setOnClickListener {
-            val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        }
+            var x : List<Movie> = MovieRepository.getAllMovies()
+            println("$myMovieID, ${x.size}")
+            x.forEach {
 
+                if(myMovieID == it.id)
+                {
+                    println("Yesssssssssssssssssssssssssssssssssssss")
+                    it.isFavorite = true
+                }
+            }
+
+        }
 
     }
 }

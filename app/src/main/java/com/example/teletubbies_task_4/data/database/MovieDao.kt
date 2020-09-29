@@ -16,8 +16,10 @@ interface MovieDao {
 
 
     //For favorite list.
-    @Query("SELECT * FROM Movie_table where isFavorite=0")
+    @Query("SELECT * FROM Movie_table where isFavorite = 1")
     fun getFavoriteMovies(): List<Movie>
+
+
 
 
     @Delete
