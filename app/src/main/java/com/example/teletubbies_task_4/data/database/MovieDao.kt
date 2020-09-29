@@ -13,7 +13,7 @@ interface MovieDao {
     fun getAllMovies(): List<Movie>
 
 
-    //For favorite list.
+    //For favorite list, you can find the modification of isFavorite boolean in the repository file.
     @Query("SELECT * FROM Movie_table where isFavorite = 1")
     fun getFavoriteMovies(): List<Movie>
 

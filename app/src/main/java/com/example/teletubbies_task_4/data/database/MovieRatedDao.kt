@@ -12,7 +12,7 @@ interface MovieRatedDao {
     @Query("SELECT * FROM MovieRated_table")
     fun getAllMovies(): List<MovieRated>
 
-    //For favorite list.
+    //For favorite list, you can find the modification of isFavorite boolean in the repository file.
     @Query("SELECT * FROM MovieRated_table where isFavorite=1")
     fun getFavoriteTopRatedMovies(): List<MovieRated>
 

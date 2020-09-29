@@ -27,6 +27,7 @@ class FavouriteTopRatedFragment : Fragment() {
     private lateinit var RvAdapter: MovieRatedAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //setting up the recycler with the favorite list.
         setupRecycler()
 
     }

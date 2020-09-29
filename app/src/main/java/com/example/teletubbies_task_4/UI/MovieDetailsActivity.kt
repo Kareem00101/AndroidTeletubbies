@@ -25,25 +25,13 @@ class MovieDetailsActivity() : AppCompatActivity() {
         //For FavoriteList, getting the ID inorder to check the item i need.
         val myMovieID: Long? = intent.extras?.getLong("movieID")
 
-        //For FavoriteList
-        /*favorite_button.setOnClickListener {
-            var x : List<Movie> = MovieRepository.getAllMovies()
-            println("$myMovieID, ${x.size}")
-            x.forEach {
-
-                if(myMovieID == it.id)
-                {
-                    println("Yesssssssssssssssssssssssssssssssssssss")
-                    it.isFavorite = true
-                }
-            }
-
-        }*/
+        //In order to add the movie to the favorite list.
         favorite_button.setOnClickListener {
             if (myMovieID != null) {
                 MovieRepository.requestForFavorite(myMovieID = myMovieID, Add = true)
             }
         }
+        //In order to remove the movie from the favorite list.
         RemoveFromFavorite.setOnClickListener {
             if (myMovieID != null) {
                 MovieRepository.requestForFavorite(myMovieID = myMovieID, Add = false)

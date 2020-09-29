@@ -112,6 +112,10 @@ object MovieRepository {
 
         })
      }
+    //This function is used for the favoriteList implementation.
+    //This function is called in the MovieDetails Activity inside the btn click listener.
+    //The ID is used to determine the item i want to add or remove.
+    //the ADD boolean variable depends on the user desire to add or remove from the favoriteList.
     fun requestForFavorite(myMovieID:Long, Add: Boolean){
         apiServices.getMovie(apiKey = apiKey, page = 1).enqueue(object: Callback<MovieResponse>
         {
@@ -119,6 +123,10 @@ object MovieRepository {
                 println("Response Successful")
                 //passing the response data to the var
                 val moviesData = mapper.mapToMovieUi(response.body()!!)
+                //Here comes the magic!
+                //if the ID is equal and the user wants to add then add.
+                //if the ID is not equal and the user wants to remove then remove.
+                //The isFavorite boolean variable is used in the local class and the database.
                 moviesData.forEach { it ->
                     if(myMovieID == it.id && Add)
                     {
@@ -132,15 +140,14 @@ object MovieRepository {
                         x.remove(it)
                     }
                 }
-
+                //adding the modified list to the database.
                 appDatabase.getMovieDao().addMovies(x)
             }
-
+            //in case of failure.
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                 t.printStackTrace()
                 val msg = "Error while getting PopularFavoriteList data"
             }
-
         })
         apiServices.getTopRated(apiKey = apiKey, page=1).enqueue(object: Callback<MovieRatedResponse>
         {
@@ -149,6 +156,10 @@ object MovieRepository {
                 response: Response<MovieRatedResponse>
             ) {
                 val moviesData: List<MovieRated> = mapperRated.mapToMovieRatedUi(response.body()!!)
+                //Here comes the magic!
+                //if the ID is equal and the user wants to add then add.
+                //if the ID is not equal and the user wants to remove then remove.
+                //The isFavorite boolean variable is used in the local class and the database.
                 moviesData.forEach{
                     if(myMovieID == it.id && Add)
                     {
@@ -163,41 +174,34 @@ object MovieRepository {
                         y.remove(it)
                     }
                 }
+                //Adding the new list to the database.
                 appDatabase.getMovieRatedDao().addMovies(y)
             }
-
+            //in case of failure.
             override fun onFailure(call: Call<MovieRatedResponse>, t: Throwable) {
                 t.printStackTrace()
                 val msg = "Error while getting topRatedFavoriteList data"
-
             }
-
         })
-
-
     }
 
 
-
+    //creating the data base.
     fun createDatabase(context: Context) {
         appDatabase = AppDatabase.getDatabase(context)
     }
+    //The functions below are for the FavoriteList implementation.
+    //returns to me the popularFavoriteList to be used in the FavoritePopularFragment for the adapter
     fun getFavorite() : List<Movie>
     {
         return appDatabase.getMovieDao().getFavoriteMovies()
     }
+    //returns to me the TopRatedFavoriteList to be used in the TopRatedPopularFragment for the adapter
     fun getTopRatedFavorite() : List<MovieRated>
     {
         return appDatabase.getMovieRatedDao().getFavoriteTopRatedMovies()
     }
-    fun getAllMovies():List<Movie>
-    {
-        return appDatabase.getMovieDao().getAllMovies()
-    }
-    fun addFavoriteMovies(favoriteMovies: List<Movie>)
-    {
-        appDatabase.getMovieDao().addMovies(favoriteMovies)
-    }
+    //End of functions needed for the favoriteList Implementation.
 
     //interface class, necessary in order to create an object from the main activity.
     //Main activity must implement the interface.

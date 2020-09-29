@@ -36,6 +36,7 @@ class MovieRatedAdapter(private var movieRatedList: List<MovieRated>):RecyclerVi
         val bundle: Bundle = Bundle()
         bundle.putString("movie_description", movieLinker.description)
         bundle.putString("title", movieLinker.title)
+        //Passing the ID to be used for searching for the desired item for favoriteList implementation.
         bundle.putLong("movieID", movieLinker.id)
         //Setting the click listener on the whole item, since we got no buttons.
         holder.itemView.setOnClickListener {
