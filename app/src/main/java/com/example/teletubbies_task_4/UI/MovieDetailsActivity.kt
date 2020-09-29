@@ -41,10 +41,14 @@ class MovieDetailsActivity() : AppCompatActivity() {
         }*/
         favorite_button.setOnClickListener {
             if (myMovieID != null) {
-                MovieRepository.requestForFavorite(myMovieID = myMovieID)
+                MovieRepository.requestForFavorite(myMovieID = myMovieID, Add = true)
             }
         }
-
+        RemoveFromFavorite.setOnClickListener {
+            if (myMovieID != null) {
+                MovieRepository.requestForFavorite(myMovieID = myMovieID, Add = false)
+            }
+        }
 
     }
 }

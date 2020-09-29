@@ -112,7 +112,7 @@ object MovieRepository {
 
         })
      }
-    fun requestForFavorite(myMovieID:Long){
+    fun requestForFavorite(myMovieID:Long, Add: Boolean){
         apiServices.getMovie(apiKey = apiKey, page = 1).enqueue(object: Callback<MovieResponse>
         {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
@@ -120,13 +120,18 @@ object MovieRepository {
                 //passing the response data to the var
                 val moviesData = mapper.mapToMovieUi(response.body()!!)
                 moviesData.forEach { it ->
-                    if(myMovieID == it.id)
+                    if(myMovieID == it.id && Add)
                     {
-                        println("Yesssssssssssssssssssssssssssssssssssss")
+                        println("Added to PopularFavoriteLinkedList")
                         it.isFavorite = true
                         x.add(it)
+                    }else if(myMovieID == it.id && !Add)
+                    {
+                        println("Removed from PopularFavoriteLinkedList")
+                        it.isFavorite = false
+                        x.remove(it)
                     }
-                         }
+                }
 
                 appDatabase.getMovieDao().addMovies(x)
             }
@@ -145,11 +150,17 @@ object MovieRepository {
             ) {
                 val moviesData: List<MovieRated> = mapperRated.mapToMovieRatedUi(response.body()!!)
                 moviesData.forEach{
-                    if(myMovieID == it.id)
+                    if(myMovieID == it.id && Add)
                     {
-                        println("Yeaaaaaaaaaaaaaah")
+                        println("Added to TopRatedFavoriteLinkedList")
                         it.isFavorite = true
                         y.add(it)
+
+                    }else if(myMovieID == it.id && !Add)
+                    {
+                        println("Removed to TopRatedFavoriteLinkedList")
+                        it.isFavorite = false
+                        y.remove(it)
                     }
                 }
                 appDatabase.getMovieRatedDao().addMovies(y)
