@@ -11,9 +11,11 @@ import com.example.teletubbies_task_4.R
 import com.example.teletubbies_task_4.UI.MainViewModel
 import com.example.teletubbies_task_4.UI.MovieAdapter
 import com.example.teletubbies_task_4.data.Repository.MovieRepository
+import com.example.teletubbies_task_4.data.ui.Movie
 import kotlinx.android.synthetic.main.fragment_favourite.*
 import kotlinx.android.synthetic.main.fragment_popularr.*
 import kotlinx.android.synthetic.main.fragment_popularr.main_recycler
+import java.util.*
 
 
 class FavouriteFragment : Fragment() {
