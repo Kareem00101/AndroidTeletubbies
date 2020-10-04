@@ -28,6 +28,7 @@ object MovieRepository {
     var x = LinkedList<Movie>()
     var y = LinkedList<MovieRated>()
     private lateinit var appDatabase: AppDatabase
+    //testing variable
     var amIConnected = false
 
     //This method is to be called in the MVVM.
