@@ -26,9 +26,9 @@ class FavouriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //setting up the recycler with the favorite list.
-        if(!MovieRepository.x.isNullOrEmpty() ) {
+        //if(!MovieRepository.x.isNullOrEmpty() ) {
             setupRecycler()
-        }
+        //}
 
     }
 
