@@ -28,6 +28,7 @@ object MovieRepository {
     var x = LinkedList<Movie>()
     var y = LinkedList<MovieRated>()
     private lateinit var appDatabase: AppDatabase
+    var amIConnected = false
 
     //This method is to be called in the MVVM.
     //Popular API
@@ -52,6 +53,7 @@ object MovieRepository {
                         val moviesData = mapper.mapToMovieUi(response.body()!!)
 
                         appDatabase.getMovieDao().addMovies(moviesData)
+                        amIConnected = true
 
                         //passing the data to the implementer of the interface (MVVM).
                         callback.onMovieReady(moviesData)
@@ -71,6 +73,7 @@ object MovieRepository {
                     callback.onMovieError(errorMsg = msg)
 
                     callback.onMovieReady(appDatabase.getMovieDao().getAllMovies())
+                    amIConnected = false
                 } // end of on failure
 
             })
@@ -91,6 +94,7 @@ object MovieRepository {
                  val moviesRatedData = mapperRated.mapToMovieRatedUi(response.body()!!)
 
                  appDatabase.getMovieRatedDao().addMovies(moviesRatedData)
+                 amIConnected = true
 
                  //passing the data to the implementer of the interface (MVVM).
                  ratedcallback.onMovieRatedReady(moviesRatedData)
@@ -108,6 +112,7 @@ object MovieRepository {
              ratedcallback.onMovieRatedError(errorMsg = msg)
 
              ratedcallback.onMovieRatedReady(MovieRepository.appDatabase.getMovieRatedDao().getAllMovies())
+             amIConnected = false
             }
 
         })
@@ -142,11 +147,13 @@ object MovieRepository {
                 }
                 //adding the modified list to the database.
                 appDatabase.getMovieDao().addMovies(x)
+                amIConnected = true
             }
             //in case of failure.
             override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                 t.printStackTrace()
                 val msg = "Error while getting PopularFavoriteList data"
+                amIConnected = false
             }
         })
         apiServices.getTopRated(apiKey = apiKey, page=1).enqueue(object: Callback<MovieRatedResponse>
@@ -176,11 +183,13 @@ object MovieRepository {
                 }
                 //Adding the new list to the database.
                 appDatabase.getMovieRatedDao().addMovies(y)
+                amIConnected = true
             }
             //in case of failure.
             override fun onFailure(call: Call<MovieRatedResponse>, t: Throwable) {
                 t.printStackTrace()
                 val msg = "Error while getting topRatedFavoriteList data"
+                amIConnected = false
             }
         })
     }

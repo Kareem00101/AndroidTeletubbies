@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teletubbies_task_4.R
+import com.example.teletubbies_task_4.UI.MainViewModel
 import com.example.teletubbies_task_4.UI.MovieAdapter
 import com.example.teletubbies_task_4.data.Repository.MovieRepository
 import kotlinx.android.synthetic.main.fragment_favourite.*
@@ -26,9 +28,8 @@ class FavouriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //setting up the recycler with the favorite list.
-        if(!MovieRepository.x.isNullOrEmpty() ) {
-            setupRecycler()
-        }
+        ViewModelProvider(this).get(MainViewModel::class.java)
+        setupRecycler()
 
     }
 
