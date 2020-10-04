@@ -89,4 +89,7 @@ class MainViewModel(application: Application)  : AndroidViewModel(application),
     override fun onMovieRatedError(errorMsg: String) {
         _onError.value = errorMsg
     }
+
+    //for favoriteList
+    fun createMe(){println("main view model created")}
 }
